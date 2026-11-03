@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sol-triad-core"
+version = "1.0.0"
+description = "Canonical, deterministic coherence verification kernel based on the SOL-Triad specification."
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+    { name = "SOL-Triad Architecture Working Group" }
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Security",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = []

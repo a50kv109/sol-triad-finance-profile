@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sol-triad.org/schemas/v1/canonical-request.json",
+  "title": "SolTriadCanonicalRequest",
+  "description": "Canonical untrusted JSON payload for SOL-Triad Core verification gateway. Notice: evaluation_time and evidence_records are strictly forbidden here and must only be supplied out-of-band by host context.",
+  "type": "object",
+  "required": [
+    "request_id",
+    "protocol_version",
+    "source",
+    "constraint",
+    "dissipate",
+    "initial_state"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "description": "Unique identifier for this action evaluation request."
+    },
+    "protocol_version": {
+      "type": "string",
+      "const": "1.0.0-canonical",
+      "description": "Must match canonical protocol version 1.0.0-canonical (or legacy 0.4.0)."
+    },
+    "engine_version": {
+      "type": "string",
+      "description": "Target engine version."
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "evidence_id",
+        "authority_domain",
+        "granted_scope",
+        "granted_loss_domains",
+        "epistemic_type",
+        "timestamp_sec",
+        "max_age_sec"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "evidence_id": { "type": "string" },
+        "authority_domain": { "type": "array", "items": { "type": "string" } },
+        "granted_scope": { "type": "array", "items": { "type": "string" } },
+        "granted_loss_domains": { "type": "array", "items": { "type": "string" } },
+        "epistemic_type": { "type": "string", "enum": ["FACT", "INFERENCE", "UNKNOWN"] },
+        "timestamp_sec": { "type": "number" },
+        "max_age_sec": { "type": "number", "minimum": 0 },
+        "payload_hash": { "type": ["string", "null"] },
+        "corroborating_evidence_ids": { "type": "array", "items": { "type": "string" } },
+        "metadata": { "type": "object" }
+      }
+    },
+    "constraint": {
+      "type": "object",
+      "required": [
+        "domain_scope",
+        "target_objects"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "domain_scope": { "type": "array", "items": { "type": "string" } },
+        "target_objects": { "type": "array", "items": { "type": "string" } },
+        "protected_set": { "type": "array", "items": { "type": "string" } },
+        "min_bounds": { "type": "object", "additionalProperties": { "type": "number" } },
+        "max_bounds": { "type": "object", "additionalProperties": { "type": "number" } },
+        "protected_values": { "type": "object", "additionalProperties": { "type": "number" } },
+        "protected_flags": { "type": "array", "items": { "type": "string" } },
+        "forbidden_flags": { "type": "array", "items": { "type": "string" } },
+        "required_flags": { "type": "array", "items": { "type": "string" } },
+        "units": { "type": "object", "additionalProperties": { "type": "string" } }
+      }
+    },
+    "dissipate": {
+      "type": "object",
+      "required": [
+        "loss_domain"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "loss_domain": { "type": "array", "items": { "type": "string" } },
+        "target_states": { "type": "array", "items": { "type": "string" } },
+        "side_effects": { "type": "array", "items": { "type": "string" } },
+        "resource_cost": { "type": "object", "additionalProperties": { "type": "number" } },
+        "state_delta": { "type": "object", "additionalProperties": { "type": "number" } },
+        "flag_mutations": { "type": "object", "additionalProperties": { "type": "boolean" } },
+        "units": { "type": "object", "additionalProperties": { "type": "string" } }
+      }
+    },
+    "initial_state": {
+      "type": "object",
+      "required": [
+        "current_values"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "current_values": { "type": "object", "additionalProperties": { "type": "number" } },
+        "active_flags": { "type": "object", "additionalProperties": { "type": "boolean" } },
+        "units": { "type": "object", "additionalProperties": { "type": "string" } }
+      }
+    }
+  }
+}

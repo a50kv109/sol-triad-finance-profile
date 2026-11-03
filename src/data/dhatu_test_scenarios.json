@@ -1,0 +1,897 @@
+[
+  {
+    "test_id": "T01",
+    "input_text": "Измерить давление в топливном баке",
+    "language": "ru",
+    "expected_structure": {
+      "action": "MEASURE",
+      "operation_type": "ACTION",
+      "dhatu": "√man",
+      "produces_observation": {
+        "observation_id": "obs_01",
+        "operation_type": "OBSERVATION",
+        "object": "fuel_tank_pressure"
+      }
+    },
+    "expected_dhatu": ["√man"],
+    "expected_provenance": { "object": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Separates MEASURE action from produced OBSERVATION."
+  },
+  {
+    "test_id": "T02",
+    "input_text": "Зміряти тиск у паливному баку",
+    "language": "uk",
+    "expected_structure": {
+      "action": "MEASURE",
+      "operation_type": "ACTION",
+      "dhatu": "√man",
+      "produces_observation": {
+        "observation_id": "obs_01",
+        "operation_type": "OBSERVATION",
+        "object": "fuel_tank_pressure"
+      }
+    },
+    "expected_dhatu": ["√man"],
+    "expected_provenance": { "object": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Ukrainian equivalence to T01."
+  },
+  {
+    "test_id": "T03",
+    "input_text": "Measure pressure in fuel tank",
+    "language": "en",
+    "expected_structure": {
+      "action": "MEASURE",
+      "operation_type": "ACTION",
+      "dhatu": "√man",
+      "produces_observation": {
+        "observation_id": "obs_01",
+        "operation_type": "OBSERVATION",
+        "object": "fuel_tank_pressure"
+      }
+    },
+    "expected_dhatu": ["√man"],
+    "expected_provenance": { "object": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "English equivalence to T01."
+  },
+  {
+    "test_id": "T04",
+    "input_text": "Зафиксировать текущее состояние системы",
+    "language": "ru",
+    "expected_structure": { "action": "STATE", "operation_type": "STATE", "object": "system" },
+    "expected_dhatu": ["√sthiti"],
+    "expected_provenance": { "object": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Recognizes static state capture via √sthiti."
+  },
+  {
+    "test_id": "T05",
+    "input_text": "Зафіксувати поточний стан системи",
+    "language": "uk",
+    "expected_structure": { "action": "STATE", "operation_type": "STATE", "object": "system" },
+    "expected_dhatu": ["√sthiti"],
+    "expected_provenance": { "object": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Ukrainian equivalence to T04."
+  },
+  {
+    "test_id": "T06",
+    "input_text": "Capture current system state",
+    "language": "en",
+    "expected_structure": { "action": "STATE", "operation_type": "STATE", "object": "system" },
+    "expected_dhatu": ["√sthiti"],
+    "expected_provenance": { "object": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "English equivalence to T04."
+  },
+  {
+    "test_id": "T07",
+    "input_text": "Увеличить давление на 1.5 бар",
+    "language": "ru",
+    "expected_structure": { "action": "STATE_DELTA", "operation_type": "STATE_DELTA", "parameter": "pressure", "delta": 1.5, "units": "bar" },
+    "expected_dhatu": ["√kri"],
+    "expected_provenance": { "parameter": "EXPLICIT", "delta": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Identifies state delta with explicit value and units."
+  },
+  {
+    "test_id": "T08",
+    "input_text": "Збільшити тиск на 1.5 бар",
+    "language": "uk",
+    "expected_structure": { "action": "STATE_DELTA", "operation_type": "STATE_DELTA", "parameter": "pressure", "delta": 1.5, "units": "bar" },
+    "expected_dhatu": ["√kri"],
+    "expected_provenance": { "parameter": "EXPLICIT", "delta": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Ukrainian equivalence to T07."
+  },
+  {
+    "test_id": "T09",
+    "input_text": "Increase pressure by 1.5 bar",
+    "language": "en",
+    "expected_structure": { "action": "STATE_DELTA", "operation_type": "STATE_DELTA", "parameter": "pressure", "delta": 1.5, "units": "bar" },
+    "expected_dhatu": ["√kri"],
+    "expected_provenance": { "parameter": "EXPLICIT", "delta": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "English equivalence to T07."
+  },
+  {
+    "test_id": "T10",
+    "input_text": "Снизить температуру на 10 К",
+    "language": "ru",
+    "expected_structure": { "action": "STATE_DELTA", "operation_type": "STATE_DELTA", "parameter": "temperature", "delta": -10.0, "units": "k" },
+    "expected_dhatu": ["√kri", "√tapa"],
+    "expected_provenance": { "parameter": "EXPLICIT", "delta": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Identifies negative delta for temperature."
+  },
+  {
+    "test_id": "T11",
+    "input_text": "Знизити температуру на 10 К",
+    "language": "uk",
+    "expected_structure": { "action": "STATE_DELTA", "operation_type": "STATE_DELTA", "parameter": "temperature", "delta": -10.0, "units": "k" },
+    "expected_dhatu": ["√kri", "√tapa"],
+    "expected_provenance": { "parameter": "EXPLICIT", "delta": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Ukrainian equivalence to T10."
+  },
+  {
+    "test_id": "T12",
+    "input_text": "Decrease temperature by 10 K",
+    "language": "en",
+    "expected_structure": { "action": "STATE_DELTA", "operation_type": "STATE_DELTA", "parameter": "temperature", "delta": -10.0, "units": "k" },
+    "expected_dhatu": ["√kri", "√tapa"],
+    "expected_provenance": { "parameter": "EXPLICIT", "delta": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "English equivalence to T10."
+  },
+  {
+    "test_id": "T13",
+    "input_text": "Давление не должно превышать 5.0 бар",
+    "language": "ru",
+    "expected_structure": { "constraint": "CONSTRAINT", "operation_type": "CONSTRAINT", "parameter": "pressure", "max_bound": 5.0, "units": "bar" },
+    "expected_dhatu": ["√hri", "√tula"],
+    "expected_provenance": { "bound": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Maps to CONSTRAINT with max_bound."
+  },
+  {
+    "test_id": "T14",
+    "input_text": "Тиск не повинен перевищувати 5.0 бар",
+    "language": "uk",
+    "expected_structure": { "constraint": "CONSTRAINT", "operation_type": "CONSTRAINT", "parameter": "pressure", "max_bound": 5.0, "units": "bar" },
+    "expected_dhatu": ["√hri", "√tula"],
+    "expected_provenance": { "bound": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Ukrainian equivalence to T13."
+  },
+  {
+    "test_id": "T15",
+    "input_text": "Pressure must not exceed 5.0 bar",
+    "language": "en",
+    "expected_structure": { "constraint": "CONSTRAINT", "operation_type": "CONSTRAINT", "parameter": "pressure", "max_bound": 5.0, "units": "bar" },
+    "expected_dhatu": ["√hri", "√tula"],
+    "expected_provenance": { "bound": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "English equivalence to T13."
+  },
+  {
+    "test_id": "T16",
+    "input_text": "Минимальный уровень топлива 20 %",
+    "language": "ru",
+    "expected_structure": { "constraint": "CONSTRAINT", "operation_type": "CONSTRAINT", "parameter": "fuel_level", "min_bound": 20.0, "units": "percent" },
+    "expected_dhatu": ["√hri", "√tula"],
+    "expected_provenance": { "bound": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Maps to CONSTRAINT with min_bound."
+  },
+  {
+    "test_id": "T17",
+    "input_text": "Мінімальний рівень палива 20 %",
+    "language": "uk",
+    "expected_structure": { "constraint": "CONSTRAINT", "operation_type": "CONSTRAINT", "parameter": "fuel_level", "min_bound": 20.0, "units": "percent" },
+    "expected_dhatu": ["√hri", "√tula"],
+    "expected_provenance": { "bound": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Ukrainian equivalence to T16."
+  },
+  {
+    "test_id": "T18",
+    "input_text": "Minimum fuel level 20 %",
+    "language": "en",
+    "expected_structure": { "constraint": "CONSTRAINT", "operation_type": "CONSTRAINT", "parameter": "fuel_level", "min_bound": 20.0, "units": "percent" },
+    "expected_dhatu": ["√hri", "√tula"],
+    "expected_provenance": { "bound": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "English equivalence to T16."
+  },
+  {
+    "test_id": "T19",
+    "input_text": "Ни при каких обстоятельствах не отключать аварийный контур",
+    "language": "ru",
+    "expected_structure": { "constraint": "CONSTRAINT", "operation_type": "CONSTRAINT", "negation": true, "protected_flag": "emergency_loop" },
+    "expected_dhatu": ["√hri"],
+    "expected_provenance": { "flag": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Preserves absolute negation for protected flag."
+  },
+  {
+    "test_id": "T20",
+    "input_text": "Ні за яких обставин не вимикати аварійний контур",
+    "language": "uk",
+    "expected_structure": { "constraint": "CONSTRAINT", "operation_type": "CONSTRAINT", "negation": true, "protected_flag": "emergency_loop" },
+    "expected_dhatu": ["√hri"],
+    "expected_provenance": { "flag": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Ukrainian equivalence to T19."
+  },
+  {
+    "test_id": "T21",
+    "input_text": "Under no circumstances disable emergency loop",
+    "language": "en",
+    "expected_structure": { "constraint": "CONSTRAINT", "operation_type": "CONSTRAINT", "negation": true, "protected_flag": "emergency_loop" },
+    "expected_dhatu": ["√hri"],
+    "expected_provenance": { "flag": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "English equivalence to T19."
+  },
+  {
+    "test_id": "T22",
+    "input_text": "Запрещено допускать падение давления ниже 1.0 бар",
+    "language": "ru",
+    "expected_structure": { "constraint": "CONSTRAINT", "operation_type": "CONSTRAINT", "negation": true, "min_bound": 1.0, "units": "bar" },
+    "expected_dhatu": ["√hri"],
+    "expected_provenance": { "bound": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Handles prohibition constraint."
+  },
+  {
+    "test_id": "T23",
+    "input_text": "Заборонено допускати падіння тиску нижче 1.0 бар",
+    "language": "uk",
+    "expected_structure": { "constraint": "CONSTRAINT", "operation_type": "CONSTRAINT", "negation": true, "min_bound": 1.0, "units": "bar" },
+    "expected_dhatu": ["√hri"],
+    "expected_provenance": { "bound": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Ukrainian equivalence to T22."
+  },
+  {
+    "test_id": "T24",
+    "input_text": "Forbidden to allow pressure drop below 1.0 bar",
+    "language": "en",
+    "expected_structure": { "constraint": "CONSTRAINT", "operation_type": "CONSTRAINT", "negation": true, "min_bound": 1.0, "units": "bar" },
+    "expected_dhatu": ["√hri"],
+    "expected_provenance": { "bound": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "English equivalence to T22."
+  },
+  {
+    "test_id": "T25",
+    "input_text": "Поднять давление выше 10 бар и одновременно ограничить его на 5 бар",
+    "language": "ru",
+    "expected_structure": { "conflict": true, "constraints": ["min_10", "max_5"] },
+    "expected_dhatu": ["√kri", "√hri"],
+    "expected_provenance": { "conflict": "EXPLICIT" },
+    "expected_status": "CONFLICT",
+    "pass_criteria": "Detects logical conflict between bounds."
+  },
+  {
+    "test_id": "T26",
+    "input_text": "Підняти тиск вище 10 бар і одночасно обмежити його на 5 бар",
+    "language": "uk",
+    "expected_structure": { "conflict": true, "constraints": ["min_10", "max_5"] },
+    "expected_dhatu": ["√kri", "√hri"],
+    "expected_provenance": { "conflict": "EXPLICIT" },
+    "expected_status": "CONFLICT",
+    "pass_criteria": "Ukrainian equivalence to T25."
+  },
+  {
+    "test_id": "T27",
+    "input_text": "Raise pressure above 10 bar and simultaneously limit it to 5 bar",
+    "language": "en",
+    "expected_structure": { "conflict": true, "constraints": ["min_10", "max_5"] },
+    "expected_dhatu": ["√kri", "√hri"],
+    "expected_provenance": { "conflict": "EXPLICIT" },
+    "expected_status": "CONFLICT",
+    "pass_criteria": "English equivalence to T25."
+  },
+  {
+    "test_id": "T28",
+    "input_text": "Приказать системе активировать аварийный контур и одновременно установить флаг заблокированного состояния в false",
+    "language": "ru",
+    "expected_structure": { "conflict": true, "action": "ACTIVATE", "flag_delta": { "locked": false } },
+    "expected_dhatu": ["√shas", "√kri"],
+    "expected_provenance": { "conflict": "EXPLICIT" },
+    "expected_status": "CONFLICT",
+    "pass_criteria": "Detects instruction conflict on protected flag state."
+  },
+  {
+    "test_id": "T29",
+    "input_text": "Уменьшить температуру двигателя",
+    "language": "ru",
+    "expected_structure": { "goal": "decrease_temperature", "mechanism": "UNKNOWN" },
+    "expected_dhatu": ["√kri", "√tapa"],
+    "expected_provenance": { "mechanism": "UNKNOWN" },
+    "expected_status": "NEEDS_CLARIFICATION",
+    "pass_criteria": "Control phrase A correctly triggers NEEDS_CLARIFICATION due to unknown mechanism."
+  },
+  {
+    "test_id": "T30",
+    "input_text": "Знизити температуру двигуна",
+    "language": "uk",
+    "expected_structure": { "goal": "decrease_temperature", "mechanism": "UNKNOWN" },
+    "expected_dhatu": ["√kri", "√tapa"],
+    "expected_provenance": { "mechanism": "UNKNOWN" },
+    "expected_status": "NEEDS_CLARIFICATION",
+    "pass_criteria": "Ukrainian equivalence to T29."
+  },
+  {
+    "test_id": "T31",
+    "input_text": "Decrease engine temperature",
+    "language": "en",
+    "expected_structure": { "goal": "decrease_temperature", "mechanism": "UNKNOWN" },
+    "expected_dhatu": ["√kri", "√tapa"],
+    "expected_provenance": { "mechanism": "UNKNOWN" },
+    "expected_status": "NEEDS_CLARIFICATION",
+    "pass_criteria": "English equivalence to T29."
+  },
+  {
+    "test_id": "T32",
+    "input_text": "Оптимизировать работу системы",
+    "language": "ru",
+    "expected_structure": { "goal": "optimize", "mechanism": "UNKNOWN" },
+    "expected_dhatu": ["√kri"],
+    "expected_provenance": { "mechanism": "UNKNOWN" },
+    "expected_status": "NEEDS_CLARIFICATION",
+    "pass_criteria": "Flags vague optimization request as needing clarification."
+  },
+  {
+    "test_id": "T33",
+    "input_text": "Оптимізувати роботу системи",
+    "language": "uk",
+    "expected_structure": { "goal": "optimize", "mechanism": "UNKNOWN" },
+    "expected_dhatu": ["√kri"],
+    "expected_provenance": { "mechanism": "UNKNOWN" },
+    "expected_status": "NEEDS_CLARIFICATION",
+    "pass_criteria": "Ukrainian equivalence to T32."
+  },
+  {
+    "test_id": "T34",
+    "input_text": "Optimize system operation",
+    "language": "en",
+    "expected_structure": { "goal": "optimize", "mechanism": "UNKNOWN" },
+    "expected_dhatu": ["√kri"],
+    "expected_provenance": { "mechanism": "UNKNOWN" },
+    "expected_status": "NEEDS_CLARIFICATION",
+    "pass_criteria": "English equivalence to T32."
+  },
+  {
+    "test_id": "T35",
+    "input_text": "Ограничить давление",
+    "language": "ru",
+    "expected_structure": { "constraint": "LIMIT", "parameter": "pressure", "missing_parameters": ["bound_value", "units"] },
+    "expected_dhatu": ["√hri"],
+    "expected_provenance": { "bound_value": "UNKNOWN" },
+    "expected_status": "NEEDS_CLARIFICATION",
+    "pass_criteria": "Identifies missing parameters in incomplete constraint request."
+  },
+  {
+    "test_id": "T36",
+    "input_text": "Обмежити тиск",
+    "language": "uk",
+    "expected_structure": { "constraint": "LIMIT", "parameter": "pressure", "missing_parameters": ["bound_value", "units"] },
+    "expected_dhatu": ["√hri"],
+    "expected_provenance": { "bound_value": "UNKNOWN" },
+    "expected_status": "NEEDS_CLARIFICATION",
+    "pass_criteria": "Ukrainian equivalence to T35."
+  },
+  {
+    "test_id": "T37",
+    "input_text": "Limit pressure",
+    "language": "en",
+    "expected_structure": { "constraint": "LIMIT", "parameter": "pressure", "missing_parameters": ["bound_value", "units"] },
+    "expected_dhatu": ["√hri"],
+    "expected_provenance": { "bound_value": "UNKNOWN" },
+    "expected_status": "NEEDS_CLARIFICATION",
+    "pass_criteria": "English equivalence to T35."
+  },
+  {
+    "test_id": "T38",
+    "input_text": "Включить подачу",
+    "language": "ru",
+    "expected_structure": { "action": "CONTROL", "missing_parameters": ["target_flow", "actuator"] },
+    "expected_dhatu": ["√shas", "√kri"],
+    "expected_provenance": { "target_flow": "UNKNOWN" },
+    "expected_status": "NEEDS_CLARIFICATION",
+    "pass_criteria": "Flags missing flow parameters."
+  },
+  {
+    "test_id": "T39",
+    "input_text": "Увімкнути подачу",
+    "language": "uk",
+    "expected_structure": { "action": "CONTROL", "missing_parameters": ["target_flow", "actuator"] },
+    "expected_dhatu": ["√shas", "√kri"],
+    "expected_provenance": { "target_flow": "UNKNOWN" },
+    "expected_status": "NEEDS_CLARIFICATION",
+    "pass_criteria": "Ukrainian equivalence to T38."
+  },
+  {
+    "test_id": "T40",
+    "input_text": "Enable feed",
+    "language": "en",
+    "expected_structure": { "action": "CONTROL", "missing_parameters": ["target_flow", "actuator"] },
+    "expected_dhatu": ["√shas", "√kri"],
+    "expected_provenance": { "target_flow": "UNKNOWN" },
+    "expected_status": "NEEDS_CLARIFICATION",
+    "pass_criteria": "English equivalence to T38."
+  },
+  {
+    "test_id": "T41",
+    "input_text": "Установить температуру 80 °C",
+    "language": "ru",
+    "expected_structure": { "state": "temperature", "value": 80.0, "unit": "c", "normalized_value": 353.15, "normalized_unit": "k" },
+    "expected_dhatu": ["√sthiti"],
+    "expected_provenance": { "value": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Correctly normalizes 80 C to 353.15 K."
+  },
+  {
+    "test_id": "T42",
+    "input_text": "Встановити температуру 80 °C",
+    "language": "uk",
+    "expected_structure": { "state": "temperature", "value": 80.0, "unit": "c", "normalized_value": 353.15, "normalized_unit": "k" },
+    "expected_dhatu": ["√sthiti"],
+    "expected_provenance": { "value": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Ukrainian equivalence to T41."
+  },
+  {
+    "test_id": "T43",
+    "input_text": "Set temperature to 80 °C",
+    "language": "en",
+    "expected_structure": { "state": "temperature", "value": 80.0, "unit": "c", "normalized_value": 353.15, "normalized_unit": "k" },
+    "expected_dhatu": ["√sthiti"],
+    "expected_provenance": { "value": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "English equivalence to T41."
+  },
+  {
+    "test_id": "T44",
+    "input_text": "Давление 2 бара",
+    "language": "ru",
+    "expected_structure": { "parameter": "pressure", "value": 2.0, "unit": "bar", "normalized_value": 200000.0, "normalized_unit": "pa" },
+    "expected_dhatu": ["√sthiti"],
+    "expected_provenance": { "value": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Normalizes 2 bar to 200,000 Pa."
+  },
+  {
+    "test_id": "T45",
+    "input_text": "Тиск 2 бари",
+    "language": "uk",
+    "expected_structure": { "parameter": "pressure", "value": 2.0, "unit": "bar", "normalized_value": 200000.0, "normalized_unit": "pa" },
+    "expected_dhatu": ["√sthiti"],
+    "expected_provenance": { "value": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Ukrainian equivalence to T44."
+  },
+  {
+    "test_id": "T46",
+    "input_text": "Pressure 2 bar",
+    "language": "en",
+    "expected_structure": { "parameter": "pressure", "value": 2.0, "unit": "bar", "normalized_value": 200000.0, "normalized_unit": "pa" },
+    "expected_dhatu": ["√sthiti"],
+    "expected_provenance": { "value": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "English equivalence to T44."
+  },
+  {
+    "test_id": "T47",
+    "input_text": "Если давление превысит 3 бар, открыть сбросной клапан",
+    "language": "ru",
+    "expected_structure": {
+      "dag": {
+        "nodes": [
+          { "operation_id": "op_m1", "dhatu_id": "√man", "operation_type": "OBSERVATION", "inputs": ["pressure"] },
+          { "operation_id": "op_c1", "dhatu_id": "√tula", "operation_type": "CONSTRAINT", "inputs": ["pressure"], "parameters": { "threshold": 3.0 } },
+          { "operation_id": "op_a1", "dhatu_id": "√shas", "operation_type": "ACTION", "inputs": ["relief_valve"] }
+        ],
+        "edges": [
+          { "from": "op_m1", "to": "op_c1", "relation_type": "PRECEDES", "condition": "always" },
+          { "from": "op_c1", "to": "op_a1", "relation_type": "TRIGGERS", "condition": "pressure > 3 bar" }
+        ]
+      }
+    },
+    "expected_dhatu": ["√man", "√tula", "√shas"],
+    "expected_provenance": { "condition": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Builds complete causal DAG with condition edge."
+  },
+  {
+    "test_id": "T48",
+    "input_text": "Якщо тиск перевищить 3 бар, відкрити скидний клапан",
+    "language": "uk",
+    "expected_structure": {
+      "dag": {
+        "nodes": [
+          { "operation_id": "op_m1", "dhatu_id": "√man", "operation_type": "OBSERVATION", "inputs": ["pressure"] },
+          { "operation_id": "op_c1", "dhatu_id": "√tula", "operation_type": "CONSTRAINT", "inputs": ["pressure"], "parameters": { "threshold": 3.0 } },
+          { "operation_id": "op_a1", "dhatu_id": "√shas", "operation_type": "ACTION", "inputs": ["relief_valve"] }
+        ],
+        "edges": [
+          { "from": "op_m1", "to": "op_c1", "relation_type": "PRECEDES", "condition": "always" },
+          { "from": "op_c1", "to": "op_a1", "relation_type": "TRIGGERS", "condition": "pressure > 3 bar" }
+        ]
+      }
+    },
+    "expected_dhatu": ["√man", "√tula", "√shas"],
+    "expected_provenance": { "condition": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Ukrainian equivalence to T47."
+  },
+  {
+    "test_id": "T49",
+    "input_text": "If pressure exceeds 3 bar, open relief valve",
+    "language": "en",
+    "expected_structure": {
+      "dag": {
+        "nodes": [
+          { "operation_id": "op_m1", "dhatu_id": "√man", "operation_type": "OBSERVATION", "inputs": ["pressure"] },
+          { "operation_id": "op_c1", "dhatu_id": "√tula", "operation_type": "CONSTRAINT", "inputs": ["pressure"], "parameters": { "threshold": 3.0 } },
+          { "operation_id": "op_a1", "dhatu_id": "√shas", "operation_type": "ACTION", "inputs": ["relief_valve"] }
+        ],
+        "edges": [
+          { "from": "op_m1", "to": "op_c1", "relation_type": "PRECEDES", "condition": "always" },
+          { "from": "op_c1", "to": "op_a1", "relation_type": "TRIGGERS", "condition": "pressure > 3 bar" }
+        ]
+      }
+    },
+    "expected_dhatu": ["√man", "√tula", "√shas"],
+    "expected_provenance": { "condition": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "English equivalence to T47."
+  },
+  {
+    "test_id": "T50",
+    "input_text": "Повышение температуры вызывает рост давления",
+    "language": "ru",
+    "expected_structure": { "causal_type": "ASSERTED_CAUSAL_RELATION", "relation": "CAUSES", "from": "temperature_increase", "to": "pressure_increase" },
+    "expected_dhatu": ["√tapa"],
+    "expected_provenance": { "relation": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Captures ASSERTED_CAUSAL_RELATION without automatic physical verification."
+  },
+  {
+    "test_id": "T51",
+    "input_text": "Підвищення температури викликає зростання тиску",
+    "language": "uk",
+    "expected_structure": { "causal_type": "ASSERTED_CAUSAL_RELATION", "relation": "CAUSES", "from": "temperature_increase", "to": "pressure_increase" },
+    "expected_dhatu": ["√tapa"],
+    "expected_provenance": { "relation": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Ukrainian equivalence to T50."
+  },
+  {
+    "test_id": "T52",
+    "input_text": "Temperature increase causes pressure rise",
+    "language": "en",
+    "expected_structure": { "causal_type": "ASSERTED_CAUSAL_RELATION", "relation": "CAUSES", "from": "temperature_increase", "to": "pressure_increase" },
+    "expected_dhatu": ["√tapa"],
+    "expected_provenance": { "relation": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "English equivalence to T50."
+  },
+  {
+    "test_id": "T53",
+    "input_text": "Измерить температуру, сравнить с лимитом и заблокировать систему при превышении",
+    "language": "ru",
+    "expected_structure": {
+      "dag": {
+        "nodes": [
+          { "operation_id": "op_1", "dhatu_id": "√man", "operation_type": "OBSERVATION" },
+          { "operation_id": "op_2", "dhatu_id": "√tula", "operation_type": "CONSTRAINT" },
+          { "operation_id": "op_3", "dhatu_id": "√shas", "operation_type": "ACTION" }
+        ],
+        "edges": [
+          { "from": "op_1", "to": "op_2", "relation_type": "PRECEDES" },
+          { "from": "op_2", "to": "op_3", "relation_type": "TRIGGERS", "condition": "exceeded" }
+        ]
+      }
+    },
+    "expected_dhatu": ["√man", "√tula", "√shas"],
+    "expected_provenance": { "sequence": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Forms sequential DAG pipeline with explicit node and edge definitions."
+  },
+  {
+    "test_id": "T54",
+    "input_text": "Зміряти температуру, порівняти з лімітом та заблокувати систему при перевищенні",
+    "language": "uk",
+    "expected_structure": {
+      "dag": {
+        "nodes": [
+          { "operation_id": "op_1", "dhatu_id": "√man", "operation_type": "OBSERVATION" },
+          { "operation_id": "op_2", "dhatu_id": "√tula", "operation_type": "CONSTRAINT" },
+          { "operation_id": "op_3", "dhatu_id": "√shas", "operation_type": "ACTION" }
+        ],
+        "edges": [
+          { "from": "op_1", "to": "op_2", "relation_type": "PRECEDES" },
+          { "from": "op_2", "to": "op_3", "relation_type": "TRIGGERS", "condition": "exceeded" }
+        ]
+      }
+    },
+    "expected_dhatu": ["√man", "√tula", "√shas"],
+    "expected_provenance": { "sequence": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Ukrainian equivalence to T53."
+  },
+  {
+    "test_id": "T55",
+    "input_text": "Measure temperature, compare with limit and lock system if exceeded",
+    "language": "en",
+    "expected_structure": {
+      "dag": {
+        "nodes": [
+          { "operation_id": "op_1", "dhatu_id": "√man", "operation_type": "OBSERVATION" },
+          { "operation_id": "op_2", "dhatu_id": "√tula", "operation_type": "CONSTRAINT" },
+          { "operation_id": "op_3", "dhatu_id": "√shas", "operation_type": "ACTION" }
+        ],
+        "edges": [
+          { "from": "op_1", "to": "op_2", "relation_type": "PRECEDES" },
+          { "from": "op_2", "to": "op_3", "relation_type": "TRIGGERS", "condition": "exceeded" }
+        ]
+      }
+    },
+    "expected_dhatu": ["√man", "√tula", "√shas"],
+    "expected_provenance": { "sequence": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "English equivalence to T53."
+  },
+  {
+    "test_id": "T56",
+    "input_text": "Проверить датчик, подтвердить показания и сохранить в память",
+    "language": "ru",
+    "expected_structure": {
+      "dag": {
+        "nodes": [
+          { "operation_id": "op_v1", "dhatu_id": "√pariksha", "operation_type": "VALIDATE" },
+          { "operation_id": "op_t1", "dhatu_id": "√tula", "operation_type": "COMPARE" },
+          { "operation_id": "op_s1", "dhatu_id": "√sthiti", "operation_type": "STATE" }
+        ],
+        "edges": [
+          { "from": "op_v1", "to": "op_t1", "relation_type": "PRECEDES" },
+          { "from": "op_t1", "to": "op_s1", "relation_type": "PRECEDES" }
+        ]
+      }
+    },
+    "expected_dhatu": ["√pariksha", "√tula", "√sthiti"],
+    "expected_provenance": { "sequence": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Sequences validation, comparison and memory save in DAG."
+  },
+  {
+    "test_id": "T57",
+    "input_text": "Перевірити датчик, підтвердити показання та зберегти в пам'ять",
+    "language": "uk",
+    "expected_structure": {
+      "dag": {
+        "nodes": [
+          { "operation_id": "op_v1", "dhatu_id": "√pariksha", "operation_type": "VALIDATE" },
+          { "operation_id": "op_t1", "dhatu_id": "√tula", "operation_type": "COMPARE" },
+          { "operation_id": "op_s1", "dhatu_id": "√sthiti", "operation_type": "STATE" }
+        ],
+        "edges": [
+          { "from": "op_v1", "to": "op_t1", "relation_type": "PRECEDES" },
+          { "from": "op_t1", "to": "op_s1", "relation_type": "PRECEDES" }
+        ]
+      }
+    },
+    "expected_dhatu": ["√pariksha", "√tula", "√sthiti"],
+    "expected_provenance": { "sequence": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Ukrainian equivalence to T56."
+  },
+  {
+    "test_id": "T58",
+    "input_text": "Verify sensor, confirm readings and save to memory",
+    "language": "en",
+    "expected_structure": {
+      "dag": {
+        "nodes": [
+          { "operation_id": "op_v1", "dhatu_id": "√pariksha", "operation_type": "VALIDATE" },
+          { "operation_id": "op_t1", "dhatu_id": "√tula", "operation_type": "COMPARE" },
+          { "operation_id": "op_s1", "dhatu_id": "√sthiti", "operation_type": "STATE" }
+        ],
+        "edges": [
+          { "from": "op_v1", "to": "op_t1", "relation_type": "PRECEDES" },
+          { "from": "op_t1", "to": "op_s1", "relation_type": "PRECEDES" }
+        ]
+      }
+    },
+    "expected_dhatu": ["√pariksha", "√tula", "√sthiti"],
+    "expected_provenance": { "sequence": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "English equivalence to T56."
+  },
+  {
+    "test_id": "T59",
+    "input_text": "Одновременно измерять давление и контролировать температуру",
+    "language": "ru",
+    "expected_structure": {
+      "dag": {
+        "nodes": [
+          { "operation_id": "op_p", "dhatu_id": "√man", "operation_type": "OBSERVATION", "inputs": ["pressure"] },
+          { "operation_id": "op_t", "dhatu_id": "√shas", "operation_type": "CONTROL", "inputs": ["temperature"] }
+        ],
+        "edges": []
+      }
+    },
+    "expected_dhatu": ["√man", "√shas"],
+    "expected_provenance": { "concurrency": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Handles parallel monitoring operations without blocking precedence edges."
+  },
+  {
+    "test_id": "T60",
+    "input_text": "Одночасно вимірювати тиск і контролювати температуру",
+    "language": "uk",
+    "expected_structure": {
+      "dag": {
+        "nodes": [
+          { "operation_id": "op_p", "dhatu_id": "√man", "operation_type": "OBSERVATION", "inputs": ["pressure"] },
+          { "operation_id": "op_t", "dhatu_id": "√shas", "operation_type": "CONTROL", "inputs": ["temperature"] }
+        ],
+        "edges": []
+      }
+    },
+    "expected_dhatu": ["√man", "√shas"],
+    "expected_provenance": { "concurrency": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Ukrainian equivalence to T59."
+  },
+  {
+    "test_id": "T61",
+    "input_text": "Simultaneously measure pressure and control temperature",
+    "language": "en",
+    "expected_structure": {
+      "dag": {
+        "nodes": [
+          { "operation_id": "op_p", "dhatu_id": "√man", "operation_type": "OBSERVATION", "inputs": ["pressure"] },
+          { "operation_id": "op_t", "dhatu_id": "√shas", "operation_type": "CONTROL", "inputs": ["temperature"] }
+        ],
+        "edges": []
+      }
+    },
+    "expected_dhatu": ["√man", "√shas"],
+    "expected_provenance": { "concurrency": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "English equivalence to T59."
+  },
+  {
+    "test_id": "T62",
+    "input_text": "Параллельный запуск двух контуров охлаждения",
+    "language": "ru",
+    "expected_structure": { "parallel_nodes": 2 },
+    "expected_dhatu": ["√kri", "√tapa"],
+    "expected_provenance": { "concurrency": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Handles parallel cooling loops execution."
+  },
+  {
+    "test_id": "T63",
+    "input_text": "Обеспечить нормальный режим работы контура",
+    "language": "ru",
+    "expected_structure": {
+      "provenance": "CONTEXT_DERIVED",
+      "context_reference": {
+        "context_id": "ctx-therm-089",
+        "source_type": "SESSION_PROFILE_DB",
+        "source_fragment": "thermal_limits.subsystem_alpha.max_setpoint",
+        "inference_basis": "Derived from active session thermal envelope configuration for subsystem alpha.",
+        "confidence_modifier": 0.90
+      }
+    },
+    "expected_dhatu": ["√sthiti", "√shas"],
+    "expected_provenance": { "target": "CONTEXT_DERIVED" },
+    "expected_status": "PASS",
+    "pass_criteria": "Provides full structured provenance for context-derived parameters."
+  },
+  {
+    "test_id": "T64",
+    "input_text": "Забезпечити нормальний режим роботи контуру",
+    "language": "uk",
+    "expected_structure": {
+      "provenance": "CONTEXT_DERIVED",
+      "context_reference": {
+        "context_id": "ctx-therm-089",
+        "source_type": "SESSION_PROFILE_DB",
+        "source_fragment": "thermal_limits.subsystem_alpha.max_setpoint",
+        "inference_basis": "Derived from active session thermal envelope configuration for subsystem alpha.",
+        "confidence_modifier": 0.90
+      }
+    },
+    "expected_dhatu": ["√sthiti", "√shas"],
+    "expected_provenance": { "target": "CONTEXT_DERIVED" },
+    "expected_status": "PASS",
+    "pass_criteria": "Ukrainian equivalence to T63."
+  },
+  {
+    "test_id": "T65",
+    "input_text": "Ensure normal operation mode of circuit",
+    "language": "en",
+    "expected_structure": {
+      "provenance": "CONTEXT_DERIVED",
+      "context_reference": {
+        "context_id": "ctx-therm-089",
+        "source_type": "SESSION_PROFILE_DB",
+        "source_fragment": "thermal_limits.subsystem_alpha.max_setpoint",
+        "inference_basis": "Derived from active session thermal envelope configuration for subsystem alpha.",
+        "confidence_modifier": 0.90
+      }
+    },
+    "expected_dhatu": ["√sthiti", "√shas"],
+    "expected_provenance": { "target": "CONTEXT_DERIVED" },
+    "expected_status": "PASS",
+    "pass_criteria": "English equivalence to T63."
+  },
+  {
+    "test_id": "T66",
+    "input_text": "Поддерживать целевые параметры давления",
+    "language": "ru",
+    "expected_structure": {
+      "provenance": "CONTEXT_DERIVED",
+      "context_reference": {
+        "context_id": "ctx-press-102",
+        "source_type": "SESSION_PROFILE_DB",
+        "source_fragment": "pressure_limits.main_rail.setpoint",
+        "inference_basis": "Derived from session pressure profile configuration for main rail.",
+        "confidence_modifier": 0.95
+      }
+    },
+    "expected_dhatu": ["√tula", "√shas"],
+    "expected_provenance": { "target": "CONTEXT_DERIVED" },
+    "expected_status": "PASS",
+    "pass_criteria": "Contextually derives target pressure setpoint with complete context_reference."
+  },
+  {
+    "test_id": "T67",
+    "input_text": "Отвести избыточное тепло от двигателя",
+    "language": "ru",
+    "expected_structure": { "goal": "remove_heat", "mechanism": "UNKNOWN", "sol_mapping": "NEEDS_CLARIFICATION" },
+    "expected_dhatu": ["√tapa", "√kamp"],
+    "expected_provenance": { "mechanism": "UNKNOWN" },
+    "expected_status": "NEEDS_CLARIFICATION",
+    "pass_criteria": "Control phrase B correctly results in NEEDS_CLARIFICATION without assuming coolant loop."
+  },
+  {
+    "test_id": "T68",
+    "input_text": "Відвести надлишкове тепло від двигуна",
+    "language": "uk",
+    "expected_structure": { "goal": "remove_heat", "mechanism": "UNKNOWN", "sol_mapping": "NEEDS_CLARIFICATION" },
+    "expected_dhatu": ["√tapa", "√kamp"],
+    "expected_provenance": { "mechanism": "UNKNOWN" },
+    "expected_status": "NEEDS_CLARIFICATION",
+    "pass_criteria": "Ukrainian equivalence to T67."
+  },
+  {
+    "test_id": "T69",
+    "input_text": "Transfer excess thermal energy away from core structure",
+    "language": "en",
+    "expected_structure": { "goal": "remove_heat", "mechanism": "UNKNOWN", "sol_mapping": "NEEDS_CLARIFICATION" },
+    "expected_dhatu": ["√tapa", "√kamp"],
+    "expected_provenance": { "mechanism": "UNKNOWN" },
+    "expected_status": "NEEDS_CLARIFICATION",
+    "pass_criteria": "English equivalence to T67 without relying on the word 'dissipate' in input text."
+  },
+  {
+    "test_id": "T70",
+    "input_text": "Не допустить повышения температуры выше 80 °C",
+    "language": "ru",
+    "expected_structure": { "constraint": "CONSTRAINT", "max_bound": 353.15, "units": "k", "sol_mapping": "CONSTRAINT" },
+    "expected_dhatu": ["√hri", "√tula"],
+    "expected_provenance": { "bound": "EXPLICIT" },
+    "expected_status": "PASS",
+    "pass_criteria": "Control phrase C correctly maps to CONSTRAINT without inventing engine object and converts units correctly."
+  }
+]

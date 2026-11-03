@@ -1,0 +1,4875 @@
+{
+  "metadata": {
+    "generated_at": "2026-10-30T10:46:17.828Z",
+    "python_version": "Python 3.10.12 (SOL-Triad-Engine v0.4.1)",
+    "typescript_version": "TypeScript (SOL-Triad Simulator v0.4.1)",
+    "json_protocol_version": "0.4.0",
+    "total_scenarios": 68,
+    "match": 68,
+    "partial_match": 0,
+    "mismatch": 0,
+    "not_comparable": 0,
+    "consistency_rate": "100.0%",
+    "exact_match_rate": "100.0%"
+  },
+  "results": [
+    {
+      "id": "A01_valid_source",
+      "group": "A",
+      "name": "A01: Valid SOURCE and Evidence",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "A02_missing_evidence_id",
+      "group": "A",
+      "name": "A02: Missing or whitespace evidence_id",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "STRUCTURAL_DEFECT"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "STRUCTURAL_DEFECT"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "A03_stale_evidence",
+      "group": "A",
+      "name": "A03: Stale evidence (age 1000s > max_age 300s)",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "REVIEW",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "REVIEW",
+            "is_valid": false,
+            "codes": [
+              "TEMPORAL_STALE"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "SCOPE_PASS",
+          "STATE_PASS",
+          "TEMPORAL_STALE"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "REVIEW",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "REVIEW",
+            "is_valid": false,
+            "codes": [
+              "TEMPORAL_STALE"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "SCOPE_PASS",
+          "STATE_PASS",
+          "TEMPORAL_STALE"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "A04_future_timestamp",
+      "group": "A",
+      "name": "A04: Future evidence timestamp",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "TEMPORAL_FUTURE"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "SCOPE_PASS",
+          "STATE_PASS",
+          "TEMPORAL_FUTURE"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "TEMPORAL_FUTURE"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "SCOPE_PASS",
+          "STATE_PASS",
+          "TEMPORAL_FUTURE"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "A05_unknown_epistemic_type",
+      "group": "A",
+      "name": "A05: Unknown epistemic_type in request",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "STRUCTURAL_DEFECT"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "STRUCTURAL_DEFECT"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "A06_missing_registry_record",
+      "group": "A",
+      "name": "A06: Evidence ID missing from host registry",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "EVIDENCE_NOT_FOUND"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_NOT_FOUND",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "EVIDENCE_NOT_FOUND"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_NOT_FOUND",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "A07_incomplete_premise_chain",
+      "group": "A",
+      "name": "A07: INFERENCE record lacks corroborating premise list",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "REVIEW",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "REVIEW",
+            "is_valid": false,
+            "codes": [
+              "INFERENCE_UNSUPPORTED"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "INFERENCE_UNSUPPORTED",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "REVIEW",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "REVIEW",
+            "is_valid": false,
+            "codes": [
+              "INFERENCE_UNSUPPORTED"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "INFERENCE_UNSUPPORTED",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "A08_valid_corroborating_chain",
+      "group": "A",
+      "name": "A08: INFERENCE grounded in verified FACT premise",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "B09_inference_single_level",
+      "group": "B",
+      "name": "B09: Single level inference A -> FACT",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "B10_inference_multi_step_chain",
+      "group": "B",
+      "name": "B10: Multi-step chain A -> B -> C -> FACT",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "B11_inference_nested_chain",
+      "group": "B",
+      "name": "B11: Nested inference chain of depth 10",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "B12_inference_branching_tree",
+      "group": "B",
+      "name": "B12: Branching inference tree rooted in multiple facts",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "B13_inference_diamond_dag",
+      "group": "B",
+      "name": "B13: Diamond DAG A -> (B, C) -> D -> FACT",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "B14_inference_2_node_cycle",
+      "group": "B",
+      "name": "B14: 2-node circular dependency A -> B -> A",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "INFERENCE_CIRCULAR_DEPENDENCY"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "INFERENCE_CIRCULAR_DEPENDENCY",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "INFERENCE_CIRCULAR_DEPENDENCY"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "INFERENCE_CIRCULAR_DEPENDENCY",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "B15_inference_3_node_cycle",
+      "group": "B",
+      "name": "B15: 3-node circular dependency A -> B -> C -> A",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "INFERENCE_CIRCULAR_DEPENDENCY"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "INFERENCE_CIRCULAR_DEPENDENCY",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "INFERENCE_CIRCULAR_DEPENDENCY"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "INFERENCE_CIRCULAR_DEPENDENCY",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "B16_inference_deep_cycle",
+      "group": "B",
+      "name": "B16: Deep cycle embedded in DAG",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "INFERENCE_CIRCULAR_DEPENDENCY"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "INFERENCE_CIRCULAR_DEPENDENCY",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "INFERENCE_CIRCULAR_DEPENDENCY"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "INFERENCE_CIRCULAR_DEPENDENCY",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "B17_inference_max_depth_exceeded",
+      "group": "B",
+      "name": "B17: INFERENCE chain exceeds MAX_INFERENCE_DEPTH (64)",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "REVIEW",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "REVIEW",
+            "is_valid": false,
+            "codes": [
+              "INFERENCE_TRAVERSAL_LIMIT_EXCEEDED"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "INFERENCE_TRAVERSAL_LIMIT_EXCEEDED",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "REVIEW",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "REVIEW",
+            "is_valid": false,
+            "codes": [
+              "INFERENCE_TRAVERSAL_LIMIT_EXCEEDED"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "INFERENCE_TRAVERSAL_LIMIT_EXCEEDED",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "B18_inference_max_nodes_exceeded",
+      "group": "B",
+      "name": "B18: INFERENCE graph exceeds MAX_INFERENCE_NODES (1024)",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "REVIEW",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "REVIEW",
+            "is_valid": false,
+            "codes": [
+              "INFERENCE_TRAVERSAL_LIMIT_EXCEEDED"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "INFERENCE_TRAVERSAL_LIMIT_EXCEEDED",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "REVIEW",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "REVIEW",
+            "is_valid": false,
+            "codes": [
+              "INFERENCE_TRAVERSAL_LIMIT_EXCEEDED"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "INFERENCE_TRAVERSAL_LIMIT_EXCEEDED",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "C19_fully_authorized_scope",
+      "group": "C",
+      "name": "C19: Fully authorized domains, objects, and losses",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "C20_authority_domain_null",
+      "group": "C",
+      "name": "C20: authority_domain is null (structural defect)",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_DEFECT_NONE"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_DEFECT_NONE",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_DEFECT_NONE"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_DEFECT_NONE",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "C21_granted_scope_null",
+      "group": "C",
+      "name": "C21: granted_scope is null (structural defect)",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_DEFECT_NONE"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_DEFECT_NONE",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_DEFECT_NONE"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_DEFECT_NONE",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "C22_granted_loss_domains_null",
+      "group": "C",
+      "name": "C22: granted_loss_domains is null (structural defect)",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_DEFECT_NONE"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_DEFECT_NONE",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_DEFECT_NONE"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_DEFECT_NONE",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "C23_all_scopes_empty_zero_requests",
+      "group": "C",
+      "name": "C23: Zero privileges granted with zero requested (PASS)",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "C24_empty_scope_with_actions",
+      "group": "C",
+      "name": "C24: Zero domains granted with actions attempted (FAIL)",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "EVIDENCE_DOMAIN_MISMATCH",
+              "SCOPE_EXCEEDED_DOMAIN"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_DOMAIN_MISMATCH",
+          "SCOPE_EXCEEDED_DOMAIN",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "EVIDENCE_DOMAIN_MISMATCH",
+              "SCOPE_EXCEEDED_DOMAIN"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_DOMAIN_MISMATCH",
+          "SCOPE_EXCEEDED_DOMAIN",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "C25_unauthorized_domain",
+      "group": "C",
+      "name": "C25: Constraint domain exceeds granted authority",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_EXCEEDED_DOMAIN"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_EXCEEDED_DOMAIN",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_EXCEEDED_DOMAIN"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_EXCEEDED_DOMAIN",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "C26_unauthorized_target_object",
+      "group": "C",
+      "name": "C26: Target object exceeds granted scope",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_EXCEEDED_OBJECTS"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_EXCEEDED_OBJECTS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_EXCEEDED_OBJECTS"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_EXCEEDED_OBJECTS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "C27_unauthorized_loss_domain",
+      "group": "C",
+      "name": "C27: Dissipate loss domain exceeds granted losses",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_EXCEEDED_LOSS"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_EXCEEDED_LOSS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_EXCEEDED_LOSS"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_EXCEEDED_LOSS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "D28_valid_initial_state",
+      "group": "D",
+      "name": "D28: Valid state invariants and bounds",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "D29_min_bounds_breach",
+      "group": "D",
+      "name": "D29: Terminal value falls below min_bounds",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_MIN_BOUND_BREACH"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_MIN_BOUND_BREACH"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_MIN_BOUND_BREACH"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_MIN_BOUND_BREACH"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "D30_max_bounds_breach",
+      "group": "D",
+      "name": "D30: Terminal value exceeds max_bounds",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_MAX_BOUND_BREACH"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_MAX_BOUND_BREACH"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_MAX_BOUND_BREACH"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_MAX_BOUND_BREACH"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "D31_protected_param_mutated",
+      "group": "D",
+      "name": "D31: State delta attempts to mutate protected_set",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_PROTECTED_PARAM_MUTATED"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PROTECTED_PARAM_MUTATED"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_PROTECTED_PARAM_MUTATED"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PROTECTED_PARAM_MUTATED"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "D32_protected_value_violated",
+      "group": "D",
+      "name": "D32: Terminal value violates protected_values expectation",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_PROTECTED_VALUE_VIOLATED"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PROTECTED_VALUE_VIOLATED"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_PROTECTED_VALUE_VIOLATED"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PROTECTED_VALUE_VIOLATED"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "D33_protected_flag_mutated",
+      "group": "D",
+      "name": "D33: Flag delta mutates protected flag",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_PROTECTED_FLAG_MUTATED"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PROTECTED_FLAG_MUTATED"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {
+          "cooling_active": true
+        }
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_PROTECTED_FLAG_MUTATED"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PROTECTED_FLAG_MUTATED"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {
+          "cooling_active": true
+        }
+      },
+      "differences": []
+    },
+    {
+      "id": "D34_forbidden_flag_active",
+      "group": "D",
+      "name": "D34: Terminal state activates forbidden flag",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_FORBIDDEN_FLAG_ACTIVE"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_FORBIDDEN_FLAG_ACTIVE"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {
+          "meltdown_alarm": true
+        }
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_FORBIDDEN_FLAG_ACTIVE"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_FORBIDDEN_FLAG_ACTIVE"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {
+          "meltdown_alarm": true
+        }
+      },
+      "differences": []
+    },
+    {
+      "id": "D35_required_flag_missing",
+      "group": "D",
+      "name": "D35: Terminal state missing required flag value",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_REQUIRED_FLAG_MISSING"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_REQUIRED_FLAG_MISSING"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {
+          "safe_mode": false
+        }
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_REQUIRED_FLAG_MISSING"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_REQUIRED_FLAG_MISSING"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {
+          "safe_mode": false
+        }
+      },
+      "differences": []
+    },
+    {
+      "id": "E36_valid_dissipation",
+      "group": "E",
+      "name": "E36: Valid dissipation with positive resource cost",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5,
+          "coolant_kg": 8
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5,
+          "coolant_kg": 8
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "E37_unauthorized_dissipation_loss",
+      "group": "E",
+      "name": "E37: Dissipate loss domain outside granted loss domains",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_EXCEEDED_LOSS"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_EXCEEDED_LOSS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_EXCEEDED_LOSS"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_EXCEEDED_LOSS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "E38_negative_resource_cost",
+      "group": "E",
+      "name": "E38: Negative resource cost is strictly forbidden",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_NEGATIVE_RESOURCE_COST"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_NEGATIVE_RESOURCE_COST"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_NEGATIVE_RESOURCE_COST"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_NEGATIVE_RESOURCE_COST"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "E39_incompatible_units_mutation",
+      "group": "E",
+      "name": "E39: Incompatible units between dissipation and constraint",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "UNIT_INCOMPATIBLE"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "UNIT_INCOMPATIBLE"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "UNIT_INCOMPATIBLE"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "UNIT_INCOMPATIBLE"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "E40_side_effect_mutates_protected",
+      "group": "E",
+      "name": "E40: Side effect modifies protected parameter",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_PROTECTED_PARAM_MUTATED"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PROTECTED_PARAM_MUTATED"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_PROTECTED_PARAM_MUTATED"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PROTECTED_PARAM_MUTATED"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "F41_absolute_temperature_c_to_k",
+      "group": "F",
+      "name": "F41: Absolute temperature conversion C to K",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_MISSING_VAR"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_MISSING_VAR"
+        ],
+        "simulated_values": {
+          "temp": 370
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_MISSING_VAR"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_MISSING_VAR"
+        ],
+        "simulated_values": {
+          "temp": 370
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "F42_absolute_temperature_k_to_c",
+      "group": "F",
+      "name": "F42: Absolute temperature conversion K to C",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_MISSING_VAR"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_MISSING_VAR"
+        ],
+        "simulated_values": {
+          "temp": 20
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_MISSING_VAR"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_MISSING_VAR"
+        ],
+        "simulated_values": {
+          "temp": 20
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "F43_delta_temperature_c_to_k",
+      "group": "F",
+      "name": "F43: Temperature increment Delta C to Delta K (without affine shift)",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_MISSING_VAR"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_MISSING_VAR"
+        ],
+        "simulated_values": {
+          "temp": 310
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_MISSING_VAR"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_MISSING_VAR"
+        ],
+        "simulated_values": {
+          "temp": 310
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "F44_delta_temperature_k_to_c",
+      "group": "F",
+      "name": "F44: Temperature increment Delta K to Delta C",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_MISSING_VAR"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_MISSING_VAR"
+        ],
+        "simulated_values": {
+          "temp": 30
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_MISSING_VAR"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_MISSING_VAR"
+        ],
+        "simulated_values": {
+          "temp": 30
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "F45_pressure_conversion",
+      "group": "F",
+      "name": "F45: Pressure conversion kPa to bar",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_MISSING_VAR"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_MISSING_VAR"
+        ],
+        "simulated_values": {
+          "p": 1.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_MISSING_VAR"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_MISSING_VAR"
+        ],
+        "simulated_values": {
+          "p": 1.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "F46_time_conversion",
+      "group": "F",
+      "name": "F46: Time conversion hour to second",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "UNIT_INCOMPATIBLE"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "UNIT_INCOMPATIBLE"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "UNIT_INCOMPATIBLE"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "UNIT_INCOMPATIBLE"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "F47_incompatible_dimensions",
+      "group": "F",
+      "name": "F47: Incompatible dimensions (pressure vs time)",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "UNIT_INCOMPATIBLE"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "UNIT_INCOMPATIBLE"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "UNIT_INCOMPATIBLE"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "UNIT_INCOMPATIBLE"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "F48_unknown_unit",
+      "group": "F",
+      "name": "F48: Unregistered unit name",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "UNIT_INCOMPATIBLE"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "UNIT_INCOMPATIBLE"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "UNIT_INCOMPATIBLE"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "UNIT_INCOMPATIBLE"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "G49_valid_json",
+      "group": "G",
+      "name": "G49: Valid complete JSON protocol payload",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "PASS",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_PASS",
+          "STATE_PASS"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "G50_missing_required_field",
+      "group": "G",
+      "name": "G50: Missing required top-level protocol_version",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "STRUCTURAL_DEFECT"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "STRUCTURAL_DEFECT"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "G51_unknown_top_level_field",
+      "group": "G",
+      "name": "G51: Unsupported top-level key (evaluation_time in request body)",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "STRUCTURAL_DEFECT"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "STRUCTURAL_DEFECT"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "G52_invalid_field_type",
+      "group": "G",
+      "name": "G52: Invalid field type (string 'false' instead of boolean)",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "STRUCTURAL_DEFECT"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "STRUCTURAL_DEFECT"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "G53_unsupported_protocol_version",
+      "group": "G",
+      "name": "G53: Unsupported protocol_version 99.0.0",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "STRUCTURAL_DEFECT"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "STRUCTURAL_DEFECT"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "G54_invalid_nested_object",
+      "group": "G",
+      "name": "G54: Nested constraint primitive is string instead of object",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "STRUCTURAL_DEFECT"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "STRUCTURAL_DEFECT"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "G55_invalid_array",
+      "group": "G",
+      "name": "G55: String list contains integers",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "STRUCTURAL_DEFECT"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "STRUCTURAL_DEFECT"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "G56_nan_numeric_value",
+      "group": "G",
+      "name": "G56: Malformed unclosed JSON payload",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "STRUCTURAL_DEFECT"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "STRUCTURAL_DEFECT"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "G57_inline_evidence_records",
+      "group": "G",
+      "name": "G57: Inline evidence_records supplied by untrusted agent",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "UNTRUSTED_EVIDENCE_SOURCE"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "UNTRUSTED_EVIDENCE_SOURCE"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "UNTRUSTED_EVIDENCE_SOURCE"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "UNTRUSTED_EVIDENCE_SOURCE"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "UNTRUSTED_EVIDENCE_SOURCE"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "UNTRUSTED_EVIDENCE_SOURCE"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "UNTRUSTED_EVIDENCE_SOURCE"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "UNTRUSTED_EVIDENCE_SOURCE"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "H58_unauthorized_object_AND_min_bound_breach",
+      "group": "H",
+      "name": "H58: Multi-channel failure: P_SC scope breach + P_CD state breach",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_EXCEEDED_OBJECTS"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_MIN_BOUND_BREACH"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_EXCEEDED_OBJECTS",
+          "STATE_MIN_BOUND_BREACH"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_EXCEEDED_OBJECTS"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_MIN_BOUND_BREACH"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_EXCEEDED_OBJECTS",
+          "STATE_MIN_BOUND_BREACH"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "H59_stale_evidence_AND_invariant_breach",
+      "group": "H",
+      "name": "H59: REVIEW in P_SC combined with FAIL in P_CD -> overall FAIL",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "REVIEW",
+            "is_valid": false,
+            "codes": [
+              "TEMPORAL_STALE"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_MAX_BOUND_BREACH"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "SCOPE_PASS",
+          "STATE_MAX_BOUND_BREACH",
+          "TEMPORAL_STALE"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "REVIEW",
+            "is_valid": false,
+            "codes": [
+              "TEMPORAL_STALE"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_MAX_BOUND_BREACH"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "SCOPE_PASS",
+          "STATE_MAX_BOUND_BREACH",
+          "TEMPORAL_STALE"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "H60_unauthorized_loss_AND_protected_param",
+      "group": "H",
+      "name": "H60: P_SD loss breach + P_CD protected param mutation",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_PROTECTED_PARAM_MUTATED"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_EXCEEDED_LOSS"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_EXCEEDED_LOSS",
+          "STATE_PROTECTED_PARAM_MUTATED"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_PROTECTED_PARAM_MUTATED"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_EXCEEDED_LOSS"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_EXCEEDED_LOSS",
+          "STATE_PROTECTED_PARAM_MUTATED"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "H61_missing_evidence_AND_unit_incompatible",
+      "group": "H",
+      "name": "H61: P_SC missing evidence + P_CD incompatible unit",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "EVIDENCE_NOT_FOUND"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "UNIT_INCOMPATIBLE"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_NOT_FOUND",
+          "SCOPE_PASS",
+          "UNIT_INCOMPATIBLE"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "EVIDENCE_NOT_FOUND"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "UNIT_INCOMPATIBLE"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_NOT_FOUND",
+          "SCOPE_PASS",
+          "UNIT_INCOMPATIBLE"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "H62_null_authority_AND_negative_cost",
+      "group": "H",
+      "name": "H62: Null authority defect + P_CD negative resource cost",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_DEFECT_NONE"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_NEGATIVE_RESOURCE_COST"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_DEFECT_NONE",
+          "STATE_NEGATIVE_RESOURCE_COST"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_DEFECT_NONE"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_NEGATIVE_RESOURCE_COST"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_DEFECT_NONE",
+          "STATE_NEGATIVE_RESOURCE_COST"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "H63_circular_inference_AND_protected_value",
+      "group": "H",
+      "name": "H63: P_SC circular inference + P_CD protected value violation",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "INFERENCE_CIRCULAR_DEPENDENCY"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_PROTECTED_VALUE_VIOLATED"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "INFERENCE_CIRCULAR_DEPENDENCY",
+          "SCOPE_PASS",
+          "STATE_PROTECTED_VALUE_VIOLATED"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "INFERENCE_CIRCULAR_DEPENDENCY"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_PROTECTED_VALUE_VIOLATED"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "INFERENCE_CIRCULAR_DEPENDENCY",
+          "SCOPE_PASS",
+          "STATE_PROTECTED_VALUE_VIOLATED"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "H64_future_timestamp_AND_unauthorized_loss",
+      "group": "H",
+      "name": "H64: P_SC future timestamp + P_SD unauthorized loss domain",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "TEMPORAL_FUTURE"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_EXCEEDED_LOSS"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "SCOPE_EXCEEDED_LOSS",
+          "STATE_PASS",
+          "TEMPORAL_FUTURE"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "TEMPORAL_FUTURE"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_EXCEEDED_LOSS"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "SCOPE_EXCEEDED_LOSS",
+          "STATE_PASS",
+          "TEMPORAL_FUTURE"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "H65_stale_evidence_AND_unauthorized_loss",
+      "group": "H",
+      "name": "H65: P_SC review + P_SD fail -> overall FAIL",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "REVIEW",
+            "is_valid": false,
+            "codes": [
+              "TEMPORAL_STALE"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_EXCEEDED_LOSS"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "SCOPE_EXCEEDED_LOSS",
+          "STATE_PASS",
+          "TEMPORAL_STALE"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "REVIEW",
+            "is_valid": false,
+            "codes": [
+              "TEMPORAL_STALE"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_EXCEEDED_LOSS"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "SCOPE_EXCEEDED_LOSS",
+          "STATE_PASS",
+          "TEMPORAL_STALE"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "H66_three_way_failure",
+      "group": "H",
+      "name": "H66: Three-way simultaneous channel failure (P_SC, P_CD, P_SD)",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_EXCEEDED_OBJECTS"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_MIN_BOUND_BREACH"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_EXCEEDED_LOSS"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_EXCEEDED_LOSS",
+          "SCOPE_EXCEEDED_OBJECTS",
+          "STATE_MIN_BOUND_BREACH"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_EXCEEDED_OBJECTS"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STATE_MIN_BOUND_BREACH"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "SCOPE_EXCEEDED_LOSS"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "EVIDENCE_PASS",
+          "SCOPE_EXCEEDED_LOSS",
+          "SCOPE_EXCEEDED_OBJECTS",
+          "STATE_MIN_BOUND_BREACH"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "H67_stale_evidence_AND_valid_CD_SD",
+      "group": "H",
+      "name": "H67: Stale evidence (P_SC REVIEW) with valid P_CD and P_SD -> overall REVIEW",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "REVIEW",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "REVIEW",
+            "is_valid": false,
+            "codes": [
+              "TEMPORAL_STALE"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "SCOPE_PASS",
+          "STATE_PASS",
+          "TEMPORAL_STALE"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "REVIEW",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "REVIEW",
+            "is_valid": false,
+            "codes": [
+              "TEMPORAL_STALE"
+            ]
+          },
+          "P_CD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": [
+              "STATE_PASS"
+            ]
+          },
+          "P_SD": {
+            "verdict": "PASS",
+            "is_valid": true,
+            "codes": []
+          }
+        },
+        "diagnostic_codes": [
+          "SCOPE_PASS",
+          "STATE_PASS",
+          "TEMPORAL_STALE"
+        ],
+        "simulated_values": {
+          "coolant_pressure": 4.5
+        },
+        "simulated_flags": {}
+      },
+      "differences": []
+    },
+    {
+      "id": "H68_unsupported_protocol_AND_state_breach",
+      "group": "H",
+      "name": "H68: Schema protocol defect takes precedence over state checks",
+      "status": "MATCH",
+      "summary": "Exact parity across verdict, pairwise channels, diagnostics, and simulated state.",
+      "python": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "STRUCTURAL_DEFECT"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "typescript": {
+        "verdict": "FAIL",
+        "pairwise": {
+          "P_SC": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_CD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          },
+          "P_SD": {
+            "verdict": "FAIL",
+            "is_valid": false,
+            "codes": [
+              "STRUCTURAL_DEFECT"
+            ]
+          }
+        },
+        "diagnostic_codes": [
+          "STRUCTURAL_DEFECT"
+        ],
+        "simulated_values": {},
+        "simulated_flags": {}
+      },
+      "differences": []
+    }
+  ]
+}

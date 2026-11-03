@@ -1,0 +1,5118 @@
+[
+  {
+    "id": "A01_valid_source",
+    "group": "A",
+    "name": "A01: Valid SOURCE and Evidence",
+    "response": {
+      "request_id": "req-a01",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "PASS",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "A02_missing_evidence_id",
+    "group": "A",
+    "name": "A02: Missing or whitespace evidence_id",
+    "response": {
+      "request_id": "req-a02",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Validation error in request primitives: source.evidence_id must be a non-empty string",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Validation error in request primitives: source.evidence_id must be a non-empty string",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Validation error in request primitives: source.evidence_id must be a non-empty string",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "STRUCTURAL_DEFECT",
+          "severity": "ERROR",
+          "message": "Validation error in request primitives: source.evidence_id must be a non-empty string",
+          "primitive": null,
+          "field_name": null
+        }
+      ],
+      "simulated_values": {},
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[STRUCTURAL_DEFECT] Validation error in request primitives: source.evidence_id must be a non-empty string"
+      ]
+    }
+  },
+  {
+    "id": "A03_stale_evidence",
+    "group": "A",
+    "name": "A03: Stale evidence (age 1000s > max_age 300s)",
+    "response": {
+      "request_id": "req-a03",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "REVIEW",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "REVIEW",
+          "diagnostics": [
+            {
+              "code": "TEMPORAL_STALE",
+              "severity": "WARNING",
+              "message": "Evidence is stale: age 1000.00s exceeds max_age_sec (300.00s)",
+              "primitive": "SOURCE",
+              "field_name": "timestamp_sec"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "TEMPORAL_STALE",
+          "severity": "WARNING",
+          "message": "Evidence is stale: age 1000.00s exceeds max_age_sec (300.00s)",
+          "primitive": "SOURCE",
+          "field_name": "timestamp_sec"
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[TEMPORAL_STALE] Evidence is stale: age 1000.00s exceeds max_age_sec (300.00s)",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "A04_future_timestamp",
+    "group": "A",
+    "name": "A04: Future evidence timestamp",
+    "response": {
+      "request_id": "req-a04",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "TEMPORAL_FUTURE",
+              "severity": "ERROR",
+              "message": "Source timestamp is in the future (1740000100.00 > current 1740000000.00)",
+              "primitive": "SOURCE",
+              "field_name": "timestamp_sec"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "TEMPORAL_FUTURE",
+          "severity": "ERROR",
+          "message": "Source timestamp is in the future (1740000100.00 > current 1740000000.00)",
+          "primitive": "SOURCE",
+          "field_name": "timestamp_sec"
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[TEMPORAL_FUTURE] Source timestamp is in the future (1740000100.00 > current 1740000000.00)",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "A05_unknown_epistemic_type",
+    "group": "A",
+    "name": "A05: Unknown epistemic_type in request",
+    "response": {
+      "request_id": "req-a05",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Validation error in request primitives: Invalid source.epistemic_type 'INVALID_STATUS'",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Validation error in request primitives: Invalid source.epistemic_type 'INVALID_STATUS'",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Validation error in request primitives: Invalid source.epistemic_type 'INVALID_STATUS'",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "STRUCTURAL_DEFECT",
+          "severity": "ERROR",
+          "message": "Validation error in request primitives: Invalid source.epistemic_type 'INVALID_STATUS'",
+          "primitive": null,
+          "field_name": null
+        }
+      ],
+      "simulated_values": {},
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[STRUCTURAL_DEFECT] Validation error in request primitives: Invalid source.epistemic_type 'INVALID_STATUS'"
+      ]
+    }
+  },
+  {
+    "id": "A06_missing_registry_record",
+    "group": "A",
+    "name": "A06: Evidence ID missing from host registry",
+    "response": {
+      "request_id": "req-a06",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "EVIDENCE_NOT_FOUND",
+              "severity": "ERROR",
+              "message": "Primary evidence ID 'ev-ghost-not-registered' not found in registry.",
+              "primitive": "SOURCE",
+              "field_name": "evidence_id"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_NOT_FOUND",
+          "severity": "ERROR",
+          "message": "Primary evidence ID 'ev-ghost-not-registered' not found in registry.",
+          "primitive": "SOURCE",
+          "field_name": "evidence_id"
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_NOT_FOUND] Primary evidence ID 'ev-ghost-not-registered' not found in registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "A07_incomplete_premise_chain",
+    "group": "A",
+    "name": "A07: INFERENCE record lacks corroborating premise list",
+    "response": {
+      "request_id": "req-a07",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "REVIEW",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "REVIEW",
+          "diagnostics": [
+            {
+              "code": "INFERENCE_UNSUPPORTED",
+              "severity": "WARNING",
+              "message": "Inference record has no corroborating premises; requires epistemic review.",
+              "primitive": "SOURCE",
+              "field_name": "corroborating_evidence_ids"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "INFERENCE_UNSUPPORTED",
+          "severity": "WARNING",
+          "message": "Inference record has no corroborating premises; requires epistemic review.",
+          "primitive": "SOURCE",
+          "field_name": "corroborating_evidence_ids"
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[INFERENCE_UNSUPPORTED] Inference record has no corroborating premises; requires epistemic review.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "A08_valid_corroborating_chain",
+    "group": "A",
+    "name": "A08: INFERENCE grounded in verified FACT premise",
+    "response": {
+      "request_id": "req-a08",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "PASS",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "B09_inference_single_level",
+    "group": "B",
+    "name": "B09: Single level inference A -> FACT",
+    "response": {
+      "request_id": "req-b09",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "PASS",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "B10_inference_multi_step_chain",
+    "group": "B",
+    "name": "B10: Multi-step chain A -> B -> C -> FACT",
+    "response": {
+      "request_id": "req-b10",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "PASS",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "B11_inference_nested_chain",
+    "group": "B",
+    "name": "B11: Nested inference chain of depth 10",
+    "response": {
+      "request_id": "req-b11",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "PASS",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "B12_inference_branching_tree",
+    "group": "B",
+    "name": "B12: Branching inference tree rooted in multiple facts",
+    "response": {
+      "request_id": "req-b12",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "PASS",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "B13_inference_diamond_dag",
+    "group": "B",
+    "name": "B13: Diamond DAG A -> (B, C) -> D -> FACT",
+    "response": {
+      "request_id": "req-b13",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "PASS",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "B14_inference_2_node_cycle",
+    "group": "B",
+    "name": "B14: 2-node circular dependency A -> B -> A",
+    "response": {
+      "request_id": "req-b14",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "INFERENCE_CIRCULAR_DEPENDENCY",
+              "severity": "ERROR",
+              "message": "Circular inference dependency detected at evidence 'ev-b14-a'.",
+              "primitive": "SOURCE",
+              "field_name": "corroborating_evidence_ids"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "INFERENCE_CIRCULAR_DEPENDENCY",
+          "severity": "ERROR",
+          "message": "Circular inference dependency detected at evidence 'ev-b14-a'.",
+          "primitive": "SOURCE",
+          "field_name": "corroborating_evidence_ids"
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[INFERENCE_CIRCULAR_DEPENDENCY] Circular inference dependency detected at evidence 'ev-b14-a'.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "B15_inference_3_node_cycle",
+    "group": "B",
+    "name": "B15: 3-node circular dependency A -> B -> C -> A",
+    "response": {
+      "request_id": "req-b15",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "INFERENCE_CIRCULAR_DEPENDENCY",
+              "severity": "ERROR",
+              "message": "Circular inference dependency detected at evidence 'ev-b15-a'.",
+              "primitive": "SOURCE",
+              "field_name": "corroborating_evidence_ids"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "INFERENCE_CIRCULAR_DEPENDENCY",
+          "severity": "ERROR",
+          "message": "Circular inference dependency detected at evidence 'ev-b15-a'.",
+          "primitive": "SOURCE",
+          "field_name": "corroborating_evidence_ids"
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[INFERENCE_CIRCULAR_DEPENDENCY] Circular inference dependency detected at evidence 'ev-b15-a'.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "B16_inference_deep_cycle",
+    "group": "B",
+    "name": "B16: Deep cycle embedded in DAG",
+    "response": {
+      "request_id": "req-b16",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "INFERENCE_CIRCULAR_DEPENDENCY",
+              "severity": "ERROR",
+              "message": "Circular inference dependency detected at evidence 'ev-b16-c'.",
+              "primitive": "SOURCE",
+              "field_name": "corroborating_evidence_ids"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "INFERENCE_CIRCULAR_DEPENDENCY",
+          "severity": "ERROR",
+          "message": "Circular inference dependency detected at evidence 'ev-b16-c'.",
+          "primitive": "SOURCE",
+          "field_name": "corroborating_evidence_ids"
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[INFERENCE_CIRCULAR_DEPENDENCY] Circular inference dependency detected at evidence 'ev-b16-c'.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "B17_inference_max_depth_exceeded",
+    "group": "B",
+    "name": "B17: INFERENCE chain exceeds MAX_INFERENCE_DEPTH (64)",
+    "response": {
+      "request_id": "req-b17",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "REVIEW",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "REVIEW",
+          "diagnostics": [
+            {
+              "code": "INFERENCE_TRAVERSAL_LIMIT_EXCEEDED",
+              "severity": "WARNING",
+              "message": "Inference graph exceeds maximum depth of 64.",
+              "primitive": "SOURCE",
+              "field_name": "corroborating_evidence_ids"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "INFERENCE_TRAVERSAL_LIMIT_EXCEEDED",
+          "severity": "WARNING",
+          "message": "Inference graph exceeds maximum depth of 64.",
+          "primitive": "SOURCE",
+          "field_name": "corroborating_evidence_ids"
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[INFERENCE_TRAVERSAL_LIMIT_EXCEEDED] Inference graph exceeds maximum depth of 64.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "B18_inference_max_nodes_exceeded",
+    "group": "B",
+    "name": "B18: INFERENCE graph exceeds MAX_INFERENCE_NODES (1024)",
+    "response": {
+      "request_id": "req-b18",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "REVIEW",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "REVIEW",
+          "diagnostics": [
+            {
+              "code": "INFERENCE_TRAVERSAL_LIMIT_EXCEEDED",
+              "severity": "WARNING",
+              "message": "Inference graph exceeds maximum of 1024 records.",
+              "primitive": "SOURCE",
+              "field_name": "corroborating_evidence_ids"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "INFERENCE_TRAVERSAL_LIMIT_EXCEEDED",
+          "severity": "WARNING",
+          "message": "Inference graph exceeds maximum of 1024 records.",
+          "primitive": "SOURCE",
+          "field_name": "corroborating_evidence_ids"
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[INFERENCE_TRAVERSAL_LIMIT_EXCEEDED] Inference graph exceeds maximum of 1024 records.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "C19_fully_authorized_scope",
+    "group": "C",
+    "name": "C19: Fully authorized domains, objects, and losses",
+    "response": {
+      "request_id": "req-c19",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "PASS",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "C20_authority_domain_null",
+    "group": "C",
+    "name": "C20: authority_domain is null (structural defect)",
+    "response": {
+      "request_id": "req-c20",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "SCOPE_DEFECT_NONE",
+              "severity": "ERROR",
+              "message": "Source authority_domain is None (structural defect).",
+              "primitive": "SOURCE",
+              "field_name": "authority_domain"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_DEFECT_NONE",
+          "severity": "ERROR",
+          "message": "Source authority_domain is None (structural defect).",
+          "primitive": "SOURCE",
+          "field_name": "authority_domain"
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_DEFECT_NONE] Source authority_domain is None (structural defect).",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "C21_granted_scope_null",
+    "group": "C",
+    "name": "C21: granted_scope is null (structural defect)",
+    "response": {
+      "request_id": "req-c21",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "SCOPE_DEFECT_NONE",
+              "severity": "ERROR",
+              "message": "Source granted_scope is None (structural defect).",
+              "primitive": "SOURCE",
+              "field_name": "granted_scope"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_DEFECT_NONE",
+          "severity": "ERROR",
+          "message": "Source granted_scope is None (structural defect).",
+          "primitive": "SOURCE",
+          "field_name": "granted_scope"
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_DEFECT_NONE] Source granted_scope is None (structural defect).",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "C22_granted_loss_domains_null",
+    "group": "C",
+    "name": "C22: granted_loss_domains is null (structural defect)",
+    "response": {
+      "request_id": "req-c22",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "SCOPE_DEFECT_NONE",
+              "severity": "ERROR",
+              "message": "Source granted_loss_domains is None (structural defect).",
+              "primitive": "SOURCE",
+              "field_name": "granted_loss_domains"
+            }
+          ]
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_DEFECT_NONE",
+          "severity": "ERROR",
+          "message": "Source granted_loss_domains is None (structural defect).",
+          "primitive": "SOURCE",
+          "field_name": "granted_loss_domains"
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_DEFECT_NONE] Source granted_loss_domains is None (structural defect).",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "C23_all_scopes_empty_zero_requests",
+    "group": "C",
+    "name": "C23: Zero privileges granted with zero requested (PASS)",
+    "response": {
+      "request_id": "req-c23",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "PASS",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "C24_empty_scope_with_actions",
+    "group": "C",
+    "name": "C24: Zero domains granted with actions attempted (FAIL)",
+    "response": {
+      "request_id": "req-c24",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "EVIDENCE_DOMAIN_MISMATCH",
+              "severity": "ERROR",
+              "message": "Evidence domain 'thermal_control' is not within claimed authority set().",
+              "primitive": "SOURCE",
+              "field_name": "authority_domain"
+            },
+            {
+              "code": "SCOPE_EXCEEDED_DOMAIN",
+              "severity": "ERROR",
+              "message": "Constraint domain scope ['thermal_control'] exceeds granted authority: unauthorized ['thermal_control'].",
+              "primitive": "CONSTRAINT",
+              "field_name": "domain_scope"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_DOMAIN_MISMATCH",
+          "severity": "ERROR",
+          "message": "Evidence domain 'thermal_control' is not within claimed authority set().",
+          "primitive": "SOURCE",
+          "field_name": "authority_domain"
+        },
+        {
+          "code": "SCOPE_EXCEEDED_DOMAIN",
+          "severity": "ERROR",
+          "message": "Constraint domain scope ['thermal_control'] exceeds granted authority: unauthorized ['thermal_control'].",
+          "primitive": "CONSTRAINT",
+          "field_name": "domain_scope"
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_DOMAIN_MISMATCH] Evidence domain 'thermal_control' is not within claimed authority set().",
+        "[SCOPE_EXCEEDED_DOMAIN] Constraint domain scope ['thermal_control'] exceeds granted authority: unauthorized ['thermal_control'].",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "C25_unauthorized_domain",
+    "group": "C",
+    "name": "C25: Constraint domain exceeds granted authority",
+    "response": {
+      "request_id": "req-c25",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "SCOPE_EXCEEDED_DOMAIN",
+              "severity": "ERROR",
+              "message": "Constraint domain scope ['nuclear_safety', 'thermal_control'] exceeds granted authority: unauthorized ['nuclear_safety'].",
+              "primitive": "CONSTRAINT",
+              "field_name": "domain_scope"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_EXCEEDED_DOMAIN",
+          "severity": "ERROR",
+          "message": "Constraint domain scope ['nuclear_safety', 'thermal_control'] exceeds granted authority: unauthorized ['nuclear_safety'].",
+          "primitive": "CONSTRAINT",
+          "field_name": "domain_scope"
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_EXCEEDED_DOMAIN] Constraint domain scope ['nuclear_safety', 'thermal_control'] exceeds granted authority: unauthorized ['nuclear_safety'].",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "C26_unauthorized_target_object",
+    "group": "C",
+    "name": "C26: Target object exceeds granted scope",
+    "response": {
+      "request_id": "req-c26",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "SCOPE_EXCEEDED_OBJECTS",
+              "severity": "ERROR",
+              "message": "Constraint target objects ['reactor_core'] exceed granted scope: unauthorized ['reactor_core'].",
+              "primitive": "CONSTRAINT",
+              "field_name": "target_objects"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_EXCEEDED_OBJECTS",
+          "severity": "ERROR",
+          "message": "Constraint target objects ['reactor_core'] exceed granted scope: unauthorized ['reactor_core'].",
+          "primitive": "CONSTRAINT",
+          "field_name": "target_objects"
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_EXCEEDED_OBJECTS] Constraint target objects ['reactor_core'] exceed granted scope: unauthorized ['reactor_core'].",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "C27_unauthorized_loss_domain",
+    "group": "C",
+    "name": "C27: Dissipate loss domain exceeds granted losses",
+    "response": {
+      "request_id": "req-c27",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "SCOPE_EXCEEDED_LOSS",
+              "severity": "ERROR",
+              "message": "Dissipate loss domain ['explosive_decompression'] exceeds granted loss domains: unauthorized ['explosive_decompression'].",
+              "primitive": "DISSIPATE",
+              "field_name": "loss_domain"
+            }
+          ]
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_EXCEEDED_LOSS",
+          "severity": "ERROR",
+          "message": "Dissipate loss domain ['explosive_decompression'] exceeds granted loss domains: unauthorized ['explosive_decompression'].",
+          "primitive": "DISSIPATE",
+          "field_name": "loss_domain"
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_EXCEEDED_LOSS] Dissipate loss domain ['explosive_decompression'] exceeds granted loss domains: unauthorized ['explosive_decompression'].",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "D28_valid_initial_state",
+    "group": "D",
+    "name": "D28: Valid state invariants and bounds",
+    "response": {
+      "request_id": "req-d28",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "PASS",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "D29_min_bounds_breach",
+    "group": "D",
+    "name": "D29: Terminal value falls below min_bounds",
+    "response": {
+      "request_id": "req-d29",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STATE_MIN_BOUND_BREACH",
+              "severity": "ERROR",
+              "message": "Variable 'coolant_pressure' (4.5000) falls below min_bound (5.0000).",
+              "primitive": "CONSTRAINT",
+              "field_name": "coolant_pressure"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_MIN_BOUND_BREACH",
+          "severity": "ERROR",
+          "message": "Variable 'coolant_pressure' (4.5000) falls below min_bound (5.0000).",
+          "primitive": "CONSTRAINT",
+          "field_name": "coolant_pressure"
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_MIN_BOUND_BREACH] Variable 'coolant_pressure' (4.5000) falls below min_bound (5.0000)."
+      ]
+    }
+  },
+  {
+    "id": "D30_max_bounds_breach",
+    "group": "D",
+    "name": "D30: Terminal value exceeds max_bounds",
+    "response": {
+      "request_id": "req-d30",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STATE_MAX_BOUND_BREACH",
+              "severity": "ERROR",
+              "message": "Variable 'coolant_pressure' (4.5000) exceeds max_bound (4.0000).",
+              "primitive": "CONSTRAINT",
+              "field_name": "coolant_pressure"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_MAX_BOUND_BREACH",
+          "severity": "ERROR",
+          "message": "Variable 'coolant_pressure' (4.5000) exceeds max_bound (4.0000).",
+          "primitive": "CONSTRAINT",
+          "field_name": "coolant_pressure"
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_MAX_BOUND_BREACH] Variable 'coolant_pressure' (4.5000) exceeds max_bound (4.0000)."
+      ]
+    }
+  },
+  {
+    "id": "D31_protected_param_mutated",
+    "group": "D",
+    "name": "D31: State delta attempts to mutate protected_set",
+    "response": {
+      "request_id": "req-d31",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STATE_PROTECTED_PARAM_MUTATED",
+              "severity": "ERROR",
+              "message": "Dissipation mutates protected parameters: ['emergency_valve'].",
+              "primitive": "DISSIPATE",
+              "field_name": "protected_set"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PROTECTED_PARAM_MUTATED",
+          "severity": "ERROR",
+          "message": "Dissipation mutates protected parameters: ['emergency_valve'].",
+          "primitive": "DISSIPATE",
+          "field_name": "protected_set"
+        }
+      ],
+      "simulated_values": {},
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PROTECTED_PARAM_MUTATED] Dissipation mutates protected parameters: ['emergency_valve']."
+      ]
+    }
+  },
+  {
+    "id": "D32_protected_value_violated",
+    "group": "D",
+    "name": "D32: Terminal value violates protected_values expectation",
+    "response": {
+      "request_id": "req-d32",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STATE_PROTECTED_VALUE_VIOLATED",
+              "severity": "ERROR",
+              "message": "Protected value for 'coolant_pressure' violated: simulated 4.5000 != expected 3.0000.",
+              "primitive": "CONSTRAINT",
+              "field_name": "coolant_pressure"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PROTECTED_VALUE_VIOLATED",
+          "severity": "ERROR",
+          "message": "Protected value for 'coolant_pressure' violated: simulated 4.5000 != expected 3.0000.",
+          "primitive": "CONSTRAINT",
+          "field_name": "coolant_pressure"
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PROTECTED_VALUE_VIOLATED] Protected value for 'coolant_pressure' violated: simulated 4.5000 != expected 3.0000."
+      ]
+    }
+  },
+  {
+    "id": "D33_protected_flag_mutated",
+    "group": "D",
+    "name": "D33: Flag delta mutates protected flag",
+    "response": {
+      "request_id": "req-d33",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STATE_PROTECTED_FLAG_MUTATED",
+              "severity": "ERROR",
+              "message": "Flag 'cooling_active' is in protected_flags and cannot be mutated from True to False.",
+              "primitive": "CONSTRAINT",
+              "field_name": "cooling_active"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PROTECTED_FLAG_MUTATED",
+          "severity": "ERROR",
+          "message": "Flag 'cooling_active' is in protected_flags and cannot be mutated from True to False.",
+          "primitive": "CONSTRAINT",
+          "field_name": "cooling_active"
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {
+        "cooling_active": true
+      },
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PROTECTED_FLAG_MUTATED] Flag 'cooling_active' is in protected_flags and cannot be mutated from True to False."
+      ]
+    }
+  },
+  {
+    "id": "D34_forbidden_flag_active",
+    "group": "D",
+    "name": "D34: Terminal state activates forbidden flag",
+    "response": {
+      "request_id": "req-d34",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STATE_FORBIDDEN_FLAG_ACTIVE",
+              "severity": "ERROR",
+              "message": "Terminal state flag 'meltdown_alarm' holds forbidden value (True).",
+              "primitive": "CONSTRAINT",
+              "field_name": "meltdown_alarm"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_FORBIDDEN_FLAG_ACTIVE",
+          "severity": "ERROR",
+          "message": "Terminal state flag 'meltdown_alarm' holds forbidden value (True).",
+          "primitive": "CONSTRAINT",
+          "field_name": "meltdown_alarm"
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {
+        "meltdown_alarm": true
+      },
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_FORBIDDEN_FLAG_ACTIVE] Terminal state flag 'meltdown_alarm' holds forbidden value (True)."
+      ]
+    }
+  },
+  {
+    "id": "D35_required_flag_missing",
+    "group": "D",
+    "name": "D35: Terminal state missing required flag value",
+    "response": {
+      "request_id": "req-d35",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STATE_REQUIRED_FLAG_MISSING",
+              "severity": "ERROR",
+              "message": "Terminal state flag 'safe_mode' is False, but required to be True.",
+              "primitive": "CONSTRAINT",
+              "field_name": "safe_mode"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_REQUIRED_FLAG_MISSING",
+          "severity": "ERROR",
+          "message": "Terminal state flag 'safe_mode' is False, but required to be True.",
+          "primitive": "CONSTRAINT",
+          "field_name": "safe_mode"
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {
+        "safe_mode": false
+      },
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_REQUIRED_FLAG_MISSING] Terminal state flag 'safe_mode' is False, but required to be True."
+      ]
+    }
+  },
+  {
+    "id": "E36_valid_dissipation",
+    "group": "E",
+    "name": "E36: Valid dissipation with positive resource cost",
+    "response": {
+      "request_id": "req-e36",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "PASS",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5,
+        "coolant_kg": 8.0
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "E37_unauthorized_dissipation_loss",
+    "group": "E",
+    "name": "E37: Dissipate loss domain outside granted loss domains",
+    "response": {
+      "request_id": "req-e37",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "SCOPE_EXCEEDED_LOSS",
+              "severity": "ERROR",
+              "message": "Dissipate loss domain ['toxic_venting'] exceeds granted loss domains: unauthorized ['toxic_venting'].",
+              "primitive": "DISSIPATE",
+              "field_name": "loss_domain"
+            }
+          ]
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_EXCEEDED_LOSS",
+          "severity": "ERROR",
+          "message": "Dissipate loss domain ['toxic_venting'] exceeds granted loss domains: unauthorized ['toxic_venting'].",
+          "primitive": "DISSIPATE",
+          "field_name": "loss_domain"
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_EXCEEDED_LOSS] Dissipate loss domain ['toxic_venting'] exceeds granted loss domains: unauthorized ['toxic_venting'].",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "E38_negative_resource_cost",
+    "group": "E",
+    "name": "E38: Negative resource cost is strictly forbidden",
+    "response": {
+      "request_id": "req-e38",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STATE_NEGATIVE_RESOURCE_COST",
+              "severity": "ERROR",
+              "message": "Negative resource cost (-5.0) for 'coolant_kg' is forbidden.",
+              "primitive": "DISSIPATE",
+              "field_name": "coolant_kg"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_NEGATIVE_RESOURCE_COST",
+          "severity": "ERROR",
+          "message": "Negative resource cost (-5.0) for 'coolant_kg' is forbidden.",
+          "primitive": "DISSIPATE",
+          "field_name": "coolant_kg"
+        }
+      ],
+      "simulated_values": {},
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_NEGATIVE_RESOURCE_COST] Negative resource cost (-5.0) for 'coolant_kg' is forbidden."
+      ]
+    }
+  },
+  {
+    "id": "E39_incompatible_units_mutation",
+    "group": "E",
+    "name": "E39: Incompatible units between dissipation and constraint",
+    "response": {
+      "request_id": "req-e39",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "UNIT_INCOMPATIBLE",
+              "severity": "ERROR",
+              "message": "Unit mismatch for param 'coolant_pressure' between Dissipate ('second') and Constraint ('bar'): Unit 'second' is not recognized in UnitRegistry.",
+              "primitive": "DISSIPATE",
+              "field_name": "coolant_pressure"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "UNIT_INCOMPATIBLE",
+          "severity": "ERROR",
+          "message": "Unit mismatch for param 'coolant_pressure' between Dissipate ('second') and Constraint ('bar'): Unit 'second' is not recognized in UnitRegistry.",
+          "primitive": "DISSIPATE",
+          "field_name": "coolant_pressure"
+        }
+      ],
+      "simulated_values": {},
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[UNIT_INCOMPATIBLE] Unit mismatch for param 'coolant_pressure' between Dissipate ('second') and Constraint ('bar'): Unit 'second' is not recognized in UnitRegistry."
+      ]
+    }
+  },
+  {
+    "id": "E40_side_effect_mutates_protected",
+    "group": "E",
+    "name": "E40: Side effect modifies protected parameter",
+    "response": {
+      "request_id": "req-e40",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STATE_PROTECTED_PARAM_MUTATED",
+              "severity": "ERROR",
+              "message": "Dissipation mutates protected parameters: ['emergency_valve'].",
+              "primitive": "DISSIPATE",
+              "field_name": "protected_set"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PROTECTED_PARAM_MUTATED",
+          "severity": "ERROR",
+          "message": "Dissipation mutates protected parameters: ['emergency_valve'].",
+          "primitive": "DISSIPATE",
+          "field_name": "protected_set"
+        }
+      ],
+      "simulated_values": {},
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PROTECTED_PARAM_MUTATED] Dissipation mutates protected parameters: ['emergency_valve']."
+      ]
+    }
+  },
+  {
+    "id": "F41_absolute_temperature_c_to_k",
+    "group": "F",
+    "name": "F41: Absolute temperature conversion C to K",
+    "response": {
+      "request_id": "req-f41",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STATE_MISSING_VAR",
+              "severity": "ERROR",
+              "message": "Missing required state variables in terminal simulation: ['coolant_pressure'].",
+              "primitive": "CONSTRAINT",
+              "field_name": "required_variables"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_MISSING_VAR",
+          "severity": "ERROR",
+          "message": "Missing required state variables in terminal simulation: ['coolant_pressure'].",
+          "primitive": "CONSTRAINT",
+          "field_name": "required_variables"
+        }
+      ],
+      "simulated_values": {
+        "temp": 370.0
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_MISSING_VAR] Missing required state variables in terminal simulation: ['coolant_pressure']."
+      ]
+    }
+  },
+  {
+    "id": "F42_absolute_temperature_k_to_c",
+    "group": "F",
+    "name": "F42: Absolute temperature conversion K to C",
+    "response": {
+      "request_id": "req-f42",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STATE_MISSING_VAR",
+              "severity": "ERROR",
+              "message": "Missing required state variables in terminal simulation: ['coolant_pressure'].",
+              "primitive": "CONSTRAINT",
+              "field_name": "required_variables"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_MISSING_VAR",
+          "severity": "ERROR",
+          "message": "Missing required state variables in terminal simulation: ['coolant_pressure'].",
+          "primitive": "CONSTRAINT",
+          "field_name": "required_variables"
+        }
+      ],
+      "simulated_values": {
+        "temp": 20.0
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_MISSING_VAR] Missing required state variables in terminal simulation: ['coolant_pressure']."
+      ]
+    }
+  },
+  {
+    "id": "F43_delta_temperature_c_to_k",
+    "group": "F",
+    "name": "F43: Temperature increment Delta C to Delta K (without affine shift)",
+    "response": {
+      "request_id": "req-f43",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STATE_MISSING_VAR",
+              "severity": "ERROR",
+              "message": "Missing required state variables in terminal simulation: ['coolant_pressure'].",
+              "primitive": "CONSTRAINT",
+              "field_name": "required_variables"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_MISSING_VAR",
+          "severity": "ERROR",
+          "message": "Missing required state variables in terminal simulation: ['coolant_pressure'].",
+          "primitive": "CONSTRAINT",
+          "field_name": "required_variables"
+        }
+      ],
+      "simulated_values": {
+        "temp": 310.0
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_MISSING_VAR] Missing required state variables in terminal simulation: ['coolant_pressure']."
+      ]
+    }
+  },
+  {
+    "id": "F44_delta_temperature_k_to_c",
+    "group": "F",
+    "name": "F44: Temperature increment Delta K to Delta C",
+    "response": {
+      "request_id": "req-f44",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STATE_MISSING_VAR",
+              "severity": "ERROR",
+              "message": "Missing required state variables in terminal simulation: ['coolant_pressure'].",
+              "primitive": "CONSTRAINT",
+              "field_name": "required_variables"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_MISSING_VAR",
+          "severity": "ERROR",
+          "message": "Missing required state variables in terminal simulation: ['coolant_pressure'].",
+          "primitive": "CONSTRAINT",
+          "field_name": "required_variables"
+        }
+      ],
+      "simulated_values": {
+        "temp": 30.0
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_MISSING_VAR] Missing required state variables in terminal simulation: ['coolant_pressure']."
+      ]
+    }
+  },
+  {
+    "id": "F45_pressure_conversion",
+    "group": "F",
+    "name": "F45: Pressure conversion kPa to bar",
+    "response": {
+      "request_id": "req-f45",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STATE_MISSING_VAR",
+              "severity": "ERROR",
+              "message": "Missing required state variables in terminal simulation: ['coolant_pressure'].",
+              "primitive": "CONSTRAINT",
+              "field_name": "required_variables"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_MISSING_VAR",
+          "severity": "ERROR",
+          "message": "Missing required state variables in terminal simulation: ['coolant_pressure'].",
+          "primitive": "CONSTRAINT",
+          "field_name": "required_variables"
+        }
+      ],
+      "simulated_values": {
+        "p": 1.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_MISSING_VAR] Missing required state variables in terminal simulation: ['coolant_pressure']."
+      ]
+    }
+  },
+  {
+    "id": "F46_time_conversion",
+    "group": "F",
+    "name": "F46: Time conversion hour to second",
+    "response": {
+      "request_id": "req-f46",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "UNIT_INCOMPATIBLE",
+              "severity": "ERROR",
+              "message": "Unit mismatch for param 'duration' between Dissipate ('hour') and Constraint ('second'): Unit 'second' is not recognized in UnitRegistry.",
+              "primitive": "DISSIPATE",
+              "field_name": "duration"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "UNIT_INCOMPATIBLE",
+          "severity": "ERROR",
+          "message": "Unit mismatch for param 'duration' between Dissipate ('hour') and Constraint ('second'): Unit 'second' is not recognized in UnitRegistry.",
+          "primitive": "DISSIPATE",
+          "field_name": "duration"
+        }
+      ],
+      "simulated_values": {},
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[UNIT_INCOMPATIBLE] Unit mismatch for param 'duration' between Dissipate ('hour') and Constraint ('second'): Unit 'second' is not recognized in UnitRegistry."
+      ]
+    }
+  },
+  {
+    "id": "F47_incompatible_dimensions",
+    "group": "F",
+    "name": "F47: Incompatible dimensions (pressure vs time)",
+    "response": {
+      "request_id": "req-f47",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "UNIT_INCOMPATIBLE",
+              "severity": "ERROR",
+              "message": "Unit mismatch for param 'x' between Dissipate ('second') and Constraint ('second'): Both units 'second' and 'second' are unknown to UnitRegistry.",
+              "primitive": "DISSIPATE",
+              "field_name": "x"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "UNIT_INCOMPATIBLE",
+          "severity": "ERROR",
+          "message": "Unit mismatch for param 'x' between Dissipate ('second') and Constraint ('second'): Both units 'second' and 'second' are unknown to UnitRegistry.",
+          "primitive": "DISSIPATE",
+          "field_name": "x"
+        }
+      ],
+      "simulated_values": {},
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[UNIT_INCOMPATIBLE] Unit mismatch for param 'x' between Dissipate ('second') and Constraint ('second'): Both units 'second' and 'second' are unknown to UnitRegistry."
+      ]
+    }
+  },
+  {
+    "id": "F48_unknown_unit",
+    "group": "F",
+    "name": "F48: Unregistered unit name",
+    "response": {
+      "request_id": "req-f48",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "UNIT_INCOMPATIBLE",
+              "severity": "ERROR",
+              "message": "Unit mismatch for param 'coolant_pressure' between Dissipate ('bar') and Constraint ('None'): Asymmetric unit specification: 'bar' vs 'None'. Missing unit bypass rejected.",
+              "primitive": "DISSIPATE",
+              "field_name": "coolant_pressure"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "UNIT_INCOMPATIBLE",
+          "severity": "ERROR",
+          "message": "Unit mismatch for param 'coolant_pressure' between Dissipate ('bar') and Constraint ('None'): Asymmetric unit specification: 'bar' vs 'None'. Missing unit bypass rejected.",
+          "primitive": "DISSIPATE",
+          "field_name": "coolant_pressure"
+        }
+      ],
+      "simulated_values": {},
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[UNIT_INCOMPATIBLE] Unit mismatch for param 'coolant_pressure' between Dissipate ('bar') and Constraint ('None'): Asymmetric unit specification: 'bar' vs 'None'. Missing unit bypass rejected."
+      ]
+    }
+  },
+  {
+    "id": "G49_valid_json",
+    "group": "G",
+    "name": "G49: Valid complete JSON protocol payload",
+    "response": {
+      "request_id": "req-g49",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "PASS",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "G50_missing_required_field",
+    "group": "G",
+    "name": "G50: Missing required top-level protocol_version",
+    "response": {
+      "request_id": "req-g50",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Unsupported protocol_version 'None'. Supported: ['0.4.0']",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Unsupported protocol_version 'None'. Supported: ['0.4.0']",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Unsupported protocol_version 'None'. Supported: ['0.4.0']",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "STRUCTURAL_DEFECT",
+          "severity": "ERROR",
+          "message": "Unsupported protocol_version 'None'. Supported: ['0.4.0']",
+          "primitive": null,
+          "field_name": null
+        }
+      ],
+      "simulated_values": {},
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[STRUCTURAL_DEFECT] Unsupported protocol_version 'None'. Supported: ['0.4.0']"
+      ]
+    }
+  },
+  {
+    "id": "G51_unknown_top_level_field",
+    "group": "G",
+    "name": "G51: Unsupported top-level key (evaluation_time in request body)",
+    "response": {
+      "request_id": "req-g51",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "request contains unsupported field(s): evaluation_time",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "request contains unsupported field(s): evaluation_time",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "request contains unsupported field(s): evaluation_time",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "STRUCTURAL_DEFECT",
+          "severity": "ERROR",
+          "message": "request contains unsupported field(s): evaluation_time",
+          "primitive": null,
+          "field_name": null
+        }
+      ],
+      "simulated_values": {},
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[STRUCTURAL_DEFECT] request contains unsupported field(s): evaluation_time"
+      ]
+    }
+  },
+  {
+    "id": "G52_invalid_field_type",
+    "group": "G",
+    "name": "G52: Invalid field type (string 'false' instead of boolean)",
+    "response": {
+      "request_id": "req-g52",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Validation error in request primitives: initial_state.active_flags.motor_on must be a boolean",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Validation error in request primitives: initial_state.active_flags.motor_on must be a boolean",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Validation error in request primitives: initial_state.active_flags.motor_on must be a boolean",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "STRUCTURAL_DEFECT",
+          "severity": "ERROR",
+          "message": "Validation error in request primitives: initial_state.active_flags.motor_on must be a boolean",
+          "primitive": null,
+          "field_name": null
+        }
+      ],
+      "simulated_values": {},
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[STRUCTURAL_DEFECT] Validation error in request primitives: initial_state.active_flags.motor_on must be a boolean"
+      ]
+    }
+  },
+  {
+    "id": "G53_unsupported_protocol_version",
+    "group": "G",
+    "name": "G53: Unsupported protocol_version 99.0.0",
+    "response": {
+      "request_id": "req-g53",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Unsupported protocol_version '99.0.0'. Supported: ['0.4.0']",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Unsupported protocol_version '99.0.0'. Supported: ['0.4.0']",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Unsupported protocol_version '99.0.0'. Supported: ['0.4.0']",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "STRUCTURAL_DEFECT",
+          "severity": "ERROR",
+          "message": "Unsupported protocol_version '99.0.0'. Supported: ['0.4.0']",
+          "primitive": null,
+          "field_name": null
+        }
+      ],
+      "simulated_values": {},
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[STRUCTURAL_DEFECT] Unsupported protocol_version '99.0.0'. Supported: ['0.4.0']"
+      ]
+    }
+  },
+  {
+    "id": "G54_invalid_nested_object",
+    "group": "G",
+    "name": "G54: Nested constraint primitive is string instead of object",
+    "response": {
+      "request_id": "req-g54",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Missing or invalid required section 'constraint' in request payload",
+              "primitive": null,
+              "field_name": "constraint"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Missing or invalid required section 'constraint' in request payload",
+              "primitive": null,
+              "field_name": "constraint"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Missing or invalid required section 'constraint' in request payload",
+              "primitive": null,
+              "field_name": "constraint"
+            }
+          ]
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "STRUCTURAL_DEFECT",
+          "severity": "ERROR",
+          "message": "Missing or invalid required section 'constraint' in request payload",
+          "primitive": null,
+          "field_name": "constraint"
+        }
+      ],
+      "simulated_values": {},
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[STRUCTURAL_DEFECT] Missing or invalid required section 'constraint' in request payload"
+      ]
+    }
+  },
+  {
+    "id": "G55_invalid_array",
+    "group": "G",
+    "name": "G55: String list contains integers",
+    "response": {
+      "request_id": "req-g55",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Validation error in request primitives: constraint.domain_scope must be an array of strings",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Validation error in request primitives: constraint.domain_scope must be an array of strings",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Validation error in request primitives: constraint.domain_scope must be an array of strings",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "STRUCTURAL_DEFECT",
+          "severity": "ERROR",
+          "message": "Validation error in request primitives: constraint.domain_scope must be an array of strings",
+          "primitive": null,
+          "field_name": null
+        }
+      ],
+      "simulated_values": {},
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[STRUCTURAL_DEFECT] Validation error in request primitives: constraint.domain_scope must be an array of strings"
+      ]
+    }
+  },
+  {
+    "id": "G56_nan_numeric_value",
+    "group": "G",
+    "name": "G56: Malformed unclosed JSON payload",
+    "response": {
+      "request_id": "malformed_json",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "JSON decoding failure: Unterminated string starting at: line 1 column 27 (char 26)",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "JSON decoding failure: Unterminated string starting at: line 1 column 27 (char 26)",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "JSON decoding failure: Unterminated string starting at: line 1 column 27 (char 26)",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "STRUCTURAL_DEFECT",
+          "severity": "ERROR",
+          "message": "JSON decoding failure: Unterminated string starting at: line 1 column 27 (char 26)",
+          "primitive": null,
+          "field_name": null
+        }
+      ],
+      "simulated_values": {},
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[STRUCTURAL_DEFECT] JSON decoding failure: Unterminated string starting at: line 1 column 27 (char 26)"
+      ]
+    }
+  },
+  {
+    "id": "G57_inline_evidence_records",
+    "group": "G",
+    "name": "G57: Inline evidence_records supplied by untrusted agent",
+    "response": {
+      "request_id": "req-g57",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "UNTRUSTED_EVIDENCE_SOURCE",
+              "severity": "ERROR",
+              "message": "Inline evidence_records are not trusted. Register evidence in a host-controlled EvidenceRegistryOracle instead.",
+              "primitive": null,
+              "field_name": "evidence_records"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "UNTRUSTED_EVIDENCE_SOURCE",
+              "severity": "ERROR",
+              "message": "Inline evidence_records are not trusted. Register evidence in a host-controlled EvidenceRegistryOracle instead.",
+              "primitive": null,
+              "field_name": "evidence_records"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "UNTRUSTED_EVIDENCE_SOURCE",
+              "severity": "ERROR",
+              "message": "Inline evidence_records are not trusted. Register evidence in a host-controlled EvidenceRegistryOracle instead.",
+              "primitive": null,
+              "field_name": "evidence_records"
+            }
+          ]
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "UNTRUSTED_EVIDENCE_SOURCE",
+          "severity": "ERROR",
+          "message": "Inline evidence_records are not trusted. Register evidence in a host-controlled EvidenceRegistryOracle instead.",
+          "primitive": null,
+          "field_name": "evidence_records"
+        }
+      ],
+      "simulated_values": {},
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[UNTRUSTED_EVIDENCE_SOURCE] Inline evidence_records are not trusted. Register evidence in a host-controlled EvidenceRegistryOracle instead."
+      ]
+    }
+  },
+  {
+    "id": "H58_unauthorized_object_AND_min_bound_breach",
+    "group": "H",
+    "name": "H58: Multi-channel failure: P_SC scope breach + P_CD state breach",
+    "response": {
+      "request_id": "req-h58",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "SCOPE_EXCEEDED_OBJECTS",
+              "severity": "ERROR",
+              "message": "Constraint target objects ['reactor_core'] exceed granted scope: unauthorized ['reactor_core'].",
+              "primitive": "CONSTRAINT",
+              "field_name": "target_objects"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STATE_MIN_BOUND_BREACH",
+              "severity": "ERROR",
+              "message": "Variable 'coolant_pressure' (4.5000) falls below min_bound (5.0000).",
+              "primitive": "CONSTRAINT",
+              "field_name": "coolant_pressure"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_EXCEEDED_OBJECTS",
+          "severity": "ERROR",
+          "message": "Constraint target objects ['reactor_core'] exceed granted scope: unauthorized ['reactor_core'].",
+          "primitive": "CONSTRAINT",
+          "field_name": "target_objects"
+        },
+        {
+          "code": "STATE_MIN_BOUND_BREACH",
+          "severity": "ERROR",
+          "message": "Variable 'coolant_pressure' (4.5000) falls below min_bound (5.0000).",
+          "primitive": "CONSTRAINT",
+          "field_name": "coolant_pressure"
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_EXCEEDED_OBJECTS] Constraint target objects ['reactor_core'] exceed granted scope: unauthorized ['reactor_core'].",
+        "[STATE_MIN_BOUND_BREACH] Variable 'coolant_pressure' (4.5000) falls below min_bound (5.0000)."
+      ]
+    }
+  },
+  {
+    "id": "H59_stale_evidence_AND_invariant_breach",
+    "group": "H",
+    "name": "H59: REVIEW in P_SC combined with FAIL in P_CD -> overall FAIL",
+    "response": {
+      "request_id": "req-h59",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "REVIEW",
+          "diagnostics": [
+            {
+              "code": "TEMPORAL_STALE",
+              "severity": "WARNING",
+              "message": "Evidence is stale: age 1000.00s exceeds max_age_sec (300.00s)",
+              "primitive": "SOURCE",
+              "field_name": "timestamp_sec"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STATE_MAX_BOUND_BREACH",
+              "severity": "ERROR",
+              "message": "Variable 'coolant_pressure' (4.5000) exceeds max_bound (4.0000).",
+              "primitive": "CONSTRAINT",
+              "field_name": "coolant_pressure"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "TEMPORAL_STALE",
+          "severity": "WARNING",
+          "message": "Evidence is stale: age 1000.00s exceeds max_age_sec (300.00s)",
+          "primitive": "SOURCE",
+          "field_name": "timestamp_sec"
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_MAX_BOUND_BREACH",
+          "severity": "ERROR",
+          "message": "Variable 'coolant_pressure' (4.5000) exceeds max_bound (4.0000).",
+          "primitive": "CONSTRAINT",
+          "field_name": "coolant_pressure"
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[TEMPORAL_STALE] Evidence is stale: age 1000.00s exceeds max_age_sec (300.00s)",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_MAX_BOUND_BREACH] Variable 'coolant_pressure' (4.5000) exceeds max_bound (4.0000)."
+      ]
+    }
+  },
+  {
+    "id": "H60_unauthorized_loss_AND_protected_param",
+    "group": "H",
+    "name": "H60: P_SD loss breach + P_CD protected param mutation",
+    "response": {
+      "request_id": "req-h60",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STATE_PROTECTED_PARAM_MUTATED",
+              "severity": "ERROR",
+              "message": "Dissipation mutates protected parameters: ['emergency_valve'].",
+              "primitive": "DISSIPATE",
+              "field_name": "protected_set"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "SCOPE_EXCEEDED_LOSS",
+              "severity": "ERROR",
+              "message": "Dissipate loss domain ['destructive_heat_dump'] exceeds granted loss domains: unauthorized ['destructive_heat_dump'].",
+              "primitive": "DISSIPATE",
+              "field_name": "loss_domain"
+            }
+          ]
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_EXCEEDED_LOSS",
+          "severity": "ERROR",
+          "message": "Dissipate loss domain ['destructive_heat_dump'] exceeds granted loss domains: unauthorized ['destructive_heat_dump'].",
+          "primitive": "DISSIPATE",
+          "field_name": "loss_domain"
+        },
+        {
+          "code": "STATE_PROTECTED_PARAM_MUTATED",
+          "severity": "ERROR",
+          "message": "Dissipation mutates protected parameters: ['emergency_valve'].",
+          "primitive": "DISSIPATE",
+          "field_name": "protected_set"
+        }
+      ],
+      "simulated_values": {},
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_EXCEEDED_LOSS] Dissipate loss domain ['destructive_heat_dump'] exceeds granted loss domains: unauthorized ['destructive_heat_dump'].",
+        "[STATE_PROTECTED_PARAM_MUTATED] Dissipation mutates protected parameters: ['emergency_valve']."
+      ]
+    }
+  },
+  {
+    "id": "H61_missing_evidence_AND_unit_incompatible",
+    "group": "H",
+    "name": "H61: P_SC missing evidence + P_CD incompatible unit",
+    "response": {
+      "request_id": "req-h61",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "EVIDENCE_NOT_FOUND",
+              "severity": "ERROR",
+              "message": "Primary evidence ID 'ev-ghost' not found in registry.",
+              "primitive": "SOURCE",
+              "field_name": "evidence_id"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "UNIT_INCOMPATIBLE",
+              "severity": "ERROR",
+              "message": "Unit mismatch for param 'coolant_pressure' between Dissipate ('second') and Constraint ('bar'): Unit 'second' is not recognized in UnitRegistry.",
+              "primitive": "DISSIPATE",
+              "field_name": "coolant_pressure"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_NOT_FOUND",
+          "severity": "ERROR",
+          "message": "Primary evidence ID 'ev-ghost' not found in registry.",
+          "primitive": "SOURCE",
+          "field_name": "evidence_id"
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "UNIT_INCOMPATIBLE",
+          "severity": "ERROR",
+          "message": "Unit mismatch for param 'coolant_pressure' between Dissipate ('second') and Constraint ('bar'): Unit 'second' is not recognized in UnitRegistry.",
+          "primitive": "DISSIPATE",
+          "field_name": "coolant_pressure"
+        }
+      ],
+      "simulated_values": {},
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_NOT_FOUND] Primary evidence ID 'ev-ghost' not found in registry.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[UNIT_INCOMPATIBLE] Unit mismatch for param 'coolant_pressure' between Dissipate ('second') and Constraint ('bar'): Unit 'second' is not recognized in UnitRegistry."
+      ]
+    }
+  },
+  {
+    "id": "H62_null_authority_AND_negative_cost",
+    "group": "H",
+    "name": "H62: Null authority defect + P_CD negative resource cost",
+    "response": {
+      "request_id": "req-h62",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "SCOPE_DEFECT_NONE",
+              "severity": "ERROR",
+              "message": "Source authority_domain is None (structural defect).",
+              "primitive": "SOURCE",
+              "field_name": "authority_domain"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STATE_NEGATIVE_RESOURCE_COST",
+              "severity": "ERROR",
+              "message": "Negative resource cost (-1.0) for 'coolant_pressure' is forbidden.",
+              "primitive": "DISSIPATE",
+              "field_name": "coolant_pressure"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_DEFECT_NONE",
+          "severity": "ERROR",
+          "message": "Source authority_domain is None (structural defect).",
+          "primitive": "SOURCE",
+          "field_name": "authority_domain"
+        },
+        {
+          "code": "STATE_NEGATIVE_RESOURCE_COST",
+          "severity": "ERROR",
+          "message": "Negative resource cost (-1.0) for 'coolant_pressure' is forbidden.",
+          "primitive": "DISSIPATE",
+          "field_name": "coolant_pressure"
+        }
+      ],
+      "simulated_values": {},
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_DEFECT_NONE] Source authority_domain is None (structural defect).",
+        "[STATE_NEGATIVE_RESOURCE_COST] Negative resource cost (-1.0) for 'coolant_pressure' is forbidden."
+      ]
+    }
+  },
+  {
+    "id": "H63_circular_inference_AND_protected_value",
+    "group": "H",
+    "name": "H63: P_SC circular inference + P_CD protected value violation",
+    "response": {
+      "request_id": "req-h63",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "INFERENCE_CIRCULAR_DEPENDENCY",
+              "severity": "ERROR",
+              "message": "Circular inference dependency detected at evidence 'ev-h63-a'.",
+              "primitive": "SOURCE",
+              "field_name": "corroborating_evidence_ids"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STATE_PROTECTED_VALUE_VIOLATED",
+              "severity": "ERROR",
+              "message": "Protected value for 'coolant_pressure' violated: simulated 4.5000 != expected 1.0000.",
+              "primitive": "CONSTRAINT",
+              "field_name": "coolant_pressure"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "INFERENCE_CIRCULAR_DEPENDENCY",
+          "severity": "ERROR",
+          "message": "Circular inference dependency detected at evidence 'ev-h63-a'.",
+          "primitive": "SOURCE",
+          "field_name": "corroborating_evidence_ids"
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PROTECTED_VALUE_VIOLATED",
+          "severity": "ERROR",
+          "message": "Protected value for 'coolant_pressure' violated: simulated 4.5000 != expected 1.0000.",
+          "primitive": "CONSTRAINT",
+          "field_name": "coolant_pressure"
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[INFERENCE_CIRCULAR_DEPENDENCY] Circular inference dependency detected at evidence 'ev-h63-a'.",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PROTECTED_VALUE_VIOLATED] Protected value for 'coolant_pressure' violated: simulated 4.5000 != expected 1.0000."
+      ]
+    }
+  },
+  {
+    "id": "H64_future_timestamp_AND_unauthorized_loss",
+    "group": "H",
+    "name": "H64: P_SC future timestamp + P_SD unauthorized loss domain",
+    "response": {
+      "request_id": "req-h64",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "TEMPORAL_FUTURE",
+              "severity": "ERROR",
+              "message": "Source timestamp is in the future (1740000200.00 > current 1740000000.00)",
+              "primitive": "SOURCE",
+              "field_name": "timestamp_sec"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "SCOPE_EXCEEDED_LOSS",
+              "severity": "ERROR",
+              "message": "Dissipate loss domain ['black_hole_radiation'] exceeds granted loss domains: unauthorized ['black_hole_radiation'].",
+              "primitive": "DISSIPATE",
+              "field_name": "loss_domain"
+            }
+          ]
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "TEMPORAL_FUTURE",
+          "severity": "ERROR",
+          "message": "Source timestamp is in the future (1740000200.00 > current 1740000000.00)",
+          "primitive": "SOURCE",
+          "field_name": "timestamp_sec"
+        },
+        {
+          "code": "SCOPE_EXCEEDED_LOSS",
+          "severity": "ERROR",
+          "message": "Dissipate loss domain ['black_hole_radiation'] exceeds granted loss domains: unauthorized ['black_hole_radiation'].",
+          "primitive": "DISSIPATE",
+          "field_name": "loss_domain"
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[TEMPORAL_FUTURE] Source timestamp is in the future (1740000200.00 > current 1740000000.00)",
+        "[SCOPE_EXCEEDED_LOSS] Dissipate loss domain ['black_hole_radiation'] exceeds granted loss domains: unauthorized ['black_hole_radiation'].",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "H65_stale_evidence_AND_unauthorized_loss",
+    "group": "H",
+    "name": "H65: P_SC review + P_SD fail -> overall FAIL",
+    "response": {
+      "request_id": "req-h65",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "REVIEW",
+          "diagnostics": [
+            {
+              "code": "TEMPORAL_STALE",
+              "severity": "WARNING",
+              "message": "Evidence is stale: age 1200.00s exceeds max_age_sec (300.00s)",
+              "primitive": "SOURCE",
+              "field_name": "timestamp_sec"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "SCOPE_EXCEEDED_LOSS",
+              "severity": "ERROR",
+              "message": "Dissipate loss domain ['unauthorized_vent'] exceeds granted loss domains: unauthorized ['unauthorized_vent'].",
+              "primitive": "DISSIPATE",
+              "field_name": "loss_domain"
+            }
+          ]
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "TEMPORAL_STALE",
+          "severity": "WARNING",
+          "message": "Evidence is stale: age 1200.00s exceeds max_age_sec (300.00s)",
+          "primitive": "SOURCE",
+          "field_name": "timestamp_sec"
+        },
+        {
+          "code": "SCOPE_EXCEEDED_LOSS",
+          "severity": "ERROR",
+          "message": "Dissipate loss domain ['unauthorized_vent'] exceeds granted loss domains: unauthorized ['unauthorized_vent'].",
+          "primitive": "DISSIPATE",
+          "field_name": "loss_domain"
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[TEMPORAL_STALE] Evidence is stale: age 1200.00s exceeds max_age_sec (300.00s)",
+        "[SCOPE_EXCEEDED_LOSS] Dissipate loss domain ['unauthorized_vent'] exceeds granted loss domains: unauthorized ['unauthorized_vent'].",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "H66_three_way_failure",
+    "group": "H",
+    "name": "H66: Three-way simultaneous channel failure (P_SC, P_CD, P_SD)",
+    "response": {
+      "request_id": "req-h66",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "SCOPE_EXCEEDED_OBJECTS",
+              "severity": "ERROR",
+              "message": "Constraint target objects ['unauthorized_pump'] exceed granted scope: unauthorized ['unauthorized_pump'].",
+              "primitive": "CONSTRAINT",
+              "field_name": "target_objects"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STATE_MIN_BOUND_BREACH",
+              "severity": "ERROR",
+              "message": "Variable 'coolant_pressure' (4.5000) falls below min_bound (100.0000).",
+              "primitive": "CONSTRAINT",
+              "field_name": "coolant_pressure"
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "SCOPE_EXCEEDED_LOSS",
+              "severity": "ERROR",
+              "message": "Dissipate loss domain ['unauthorized_loss'] exceeds granted loss domains: unauthorized ['unauthorized_loss'].",
+              "primitive": "DISSIPATE",
+              "field_name": "loss_domain"
+            }
+          ]
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "EVIDENCE_PASS",
+          "severity": "INFO",
+          "message": "Evidence verified against authoritative registry.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "SCOPE_EXCEEDED_OBJECTS",
+          "severity": "ERROR",
+          "message": "Constraint target objects ['unauthorized_pump'] exceed granted scope: unauthorized ['unauthorized_pump'].",
+          "primitive": "CONSTRAINT",
+          "field_name": "target_objects"
+        },
+        {
+          "code": "SCOPE_EXCEEDED_LOSS",
+          "severity": "ERROR",
+          "message": "Dissipate loss domain ['unauthorized_loss'] exceeds granted loss domains: unauthorized ['unauthorized_loss'].",
+          "primitive": "DISSIPATE",
+          "field_name": "loss_domain"
+        },
+        {
+          "code": "STATE_MIN_BOUND_BREACH",
+          "severity": "ERROR",
+          "message": "Variable 'coolant_pressure' (4.5000) falls below min_bound (100.0000).",
+          "primitive": "CONSTRAINT",
+          "field_name": "coolant_pressure"
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[EVIDENCE_PASS] Evidence verified against authoritative registry.",
+        "[SCOPE_EXCEEDED_OBJECTS] Constraint target objects ['unauthorized_pump'] exceed granted scope: unauthorized ['unauthorized_pump'].",
+        "[SCOPE_EXCEEDED_LOSS] Dissipate loss domain ['unauthorized_loss'] exceeds granted loss domains: unauthorized ['unauthorized_loss'].",
+        "[STATE_MIN_BOUND_BREACH] Variable 'coolant_pressure' (4.5000) falls below min_bound (100.0000)."
+      ]
+    }
+  },
+  {
+    "id": "H67_stale_evidence_AND_valid_CD_SD",
+    "group": "H",
+    "name": "H67: Stale evidence (P_SC REVIEW) with valid P_CD and P_SD -> overall REVIEW",
+    "response": {
+      "request_id": "req-h67",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "REVIEW",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC: SOURCE <-> CONSTRAINT (Grounding & Authority)",
+          "is_valid": false,
+          "verdict": "REVIEW",
+          "diagnostics": [
+            {
+              "code": "TEMPORAL_STALE",
+              "severity": "WARNING",
+              "message": "Evidence is stale: age 800.00s exceeds max_age_sec (300.00s)",
+              "primitive": "SOURCE",
+              "field_name": "timestamp_sec"
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD: CONSTRAINT <-> DISSIPATE (State Invariant Integrity)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": [
+            {
+              "code": "STATE_PASS",
+              "severity": "INFO",
+              "message": "State simulation and invariant checks satisfied.",
+              "primitive": "STATE",
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD: SOURCE <-> DISSIPATE (Loss Domain Authority)",
+          "is_valid": true,
+          "verdict": "PASS",
+          "diagnostics": []
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "TEMPORAL_STALE",
+          "severity": "WARNING",
+          "message": "Evidence is stale: age 800.00s exceeds max_age_sec (300.00s)",
+          "primitive": "SOURCE",
+          "field_name": "timestamp_sec"
+        },
+        {
+          "code": "SCOPE_PASS",
+          "severity": "INFO",
+          "message": "Scope and authority checks satisfied.",
+          "primitive": "SOURCE",
+          "field_name": null
+        },
+        {
+          "code": "STATE_PASS",
+          "severity": "INFO",
+          "message": "State simulation and invariant checks satisfied.",
+          "primitive": "STATE",
+          "field_name": null
+        }
+      ],
+      "simulated_values": {
+        "coolant_pressure": 4.5
+      },
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[TEMPORAL_STALE] Evidence is stale: age 800.00s exceeds max_age_sec (300.00s)",
+        "[SCOPE_PASS] Scope and authority checks satisfied.",
+        "[STATE_PASS] State simulation and invariant checks satisfied."
+      ]
+    }
+  },
+  {
+    "id": "H68_unsupported_protocol_AND_state_breach",
+    "group": "H",
+    "name": "H68: Schema protocol defect takes precedence over state checks",
+    "response": {
+      "request_id": "req-h68",
+      "protocol_version": "0.4.0",
+      "engine_version": "0.4.1",
+      "verdict": "FAIL",
+      "pairwise_checks": {
+        "P_SC": {
+          "relationship": "P_SC",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Unsupported protocol_version '1.0.0'. Supported: ['0.4.0']",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        },
+        "P_CD": {
+          "relationship": "P_CD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Unsupported protocol_version '1.0.0'. Supported: ['0.4.0']",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        },
+        "P_SD": {
+          "relationship": "P_SD",
+          "is_valid": false,
+          "verdict": "FAIL",
+          "diagnostics": [
+            {
+              "code": "STRUCTURAL_DEFECT",
+              "severity": "ERROR",
+              "message": "Unsupported protocol_version '1.0.0'. Supported: ['0.4.0']",
+              "primitive": null,
+              "field_name": null
+            }
+          ]
+        }
+      },
+      "diagnostics": [
+        {
+          "code": "STRUCTURAL_DEFECT",
+          "severity": "ERROR",
+          "message": "Unsupported protocol_version '1.0.0'. Supported: ['0.4.0']",
+          "primitive": null,
+          "field_name": null
+        }
+      ],
+      "simulated_values": {},
+      "simulated_flags": {},
+      "evaluation_timestamp": 1740000000.0,
+      "messages": [
+        "[STRUCTURAL_DEFECT] Unsupported protocol_version '1.0.0'. Supported: ['0.4.0']"
+      ]
+    }
+  }
+]
